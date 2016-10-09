@@ -22,23 +22,30 @@ github issue lord
 #### Events
 
 Please describe the meetings you planning to have:
- * When and where? In-person or online?
- * What's the purpose of each meeting?
-
+ * Scrum meeting (in-person):
+ 	* Weekly updates on status of deliverables 
+ 	* Will discuss what each person has worked on over the last weekly, what the person is planning to finish by the next meeting and anything that may be blocking them 
  * Planning meeting (online): 
-     * Identify problem being solved 
-     * Decide on product functionality 
-     * Define user group and target users 
- * Review meeting: 
-     * 
+ 	* Held on October 9th, 2 hour meeting 
+    * Identify problem space      
+    * Define user group and target users 
+    * Decide on product functionality 
+    * Set up future scrum meetings and review meeting
+ * Review meeting (online): 
+    * Discuss decisions that went well and reflect on decisions that did not turn out well 
+    * List changes we are planning to make based on these decisions 
+    * Review which goals were met/completed
+    * Explain which other goals were not completed and why  
+    * Agree on 2-5 high level concepts to guide our work for the next deliverable 
+
 
 #### Artifacts
 
-Please describe the artifacts that you will produce in order to organize and keep track of your team's progress.       
-For example:
- * To-do lists, burndown chart, schedule, etc.
- * If you include charts/diagrams, make sure to explain what they represent.
- * If you're maintaining a to-do list, make sure to mention which tool you're using, how you are prioritizing items and how items get assigned to team members.
+* Burndown chart created from Github issues 
+* To-do lists tracked via Github issues with one assigned team member to each task and tagged with a priority from 1-5 (where 1 is low priority, 5 is high priority)
+* Will use Slack to communicate 
+* Shared Google calendar for deadlines and meetings 
+
 
 
 ## Product
