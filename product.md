@@ -1,33 +1,27 @@
-# YOUR PRODUCT/TEAM NAME
+# FrnT
+> /frənt/
 
 #### Q1: What are you planning to build?
 
-YOUR ANSWER GOES HERE ...
+Recent surveys suggests that an increasing number of people prefer renting properties over buying, implying less of an incentive to owning furniture. FrnT is a community based, crowd-sourced furniture-sharing rental website, allowing users to search and post furniture listings for rentals in their vicinity. Users will be able to search furniture based on characteristics such as pricing, style and location.
 
- * Short (1 min' read max)
- * Be concrete - Are you planning to build a website, mobile app,
-   browser extension, command-line app, etc.?
- * Be clear about what the problem that your product solves (or the need that it answers).
- * Focus on *what* your product does, and avoid discussing *how* you're going to implement it.      
-   For example: This is not the time or the place to talk about which programming language and/or framework you are planning to use.
- * Feel free (and very much encouraged) to include useful diagrams and/or links
-
+The final product will be available as a web application across all platforms.
 
 #### Q2: Who are your target users?
 
-YOUR ANSWER GOES HERE ...
+Our target users are mainly college students and millenials who move homes very frequently.
+
+User personas
+* Link 1 
+* Link 2
 
  * Short (1 min' read max)
  * Feel free (but not obligated) to use personas.        
    You can create your personas as part of this Markdown file, or add a link to an external site (for example, [Xtensio](https://xtensio.com/user-persona/)).
+   
 
 #### Q3: Why would your users choose your product? What are they using today to solve their problem?
 
-YOUR ANSWER GOES HERE ...
+Owning furniture is a pain; moving them is a hassle, especially between cities. Furnishing is hard for students and young professionals who do not own homes in highly populated cities such as San Francisco, NYC and Toronto where renting is the norm. Frnt is a platform for users to lease their extra furnitures to people for short periods of time.
 
- * Short (3 min' read max)
- * Essentially, we want you to "connect the dots" for us - Why does your product (as described in your answer to Q1) fits the needs of your users (as described in your answer to Q2)?
- * Highlight significant prodcut decisions that you've made:
-    * Mention which alternatives you were considering.
-    * Explain why the option you decided on makes the most sense for your product/users.
- 
+Frnt allows people to have beautifully designed homes while saving lots of money. Seasonal visitors would be able to experience the local artisanal furniture culture without committing to ownership, and redesigned their entire home when their lease is over.
