@@ -1,13 +1,16 @@
-# YOUR PRODUCT/TEAM NAME
+# FrnT
+> /frənt/
 
-## Iteration XX - Review & Retrospect
+## Iteration 01 - Review & Retrospect
 
- * When: FILL IN THE DATE WHEN YOU ACTUALLY HAD YOUR REVIEW MEETING
- * Where: PHYSICAL LOCATION AND/OR ONLINE
+ * When: October 16, 2016
+ * Where: Online (via Google Hangouts)
 
 ## Process - Reflection
 
 (Optional) Short introduction
+
+During our planning meeting, we were able to decide on an idea and justify why it's a valuable product for our user group. Through the guidance of tutorials, we had a chance to reflect on the key features that would distinguish our product from alternatives and meet the functional requirements of our users. 
 
 Decisions turned out well:
 
@@ -33,11 +36,16 @@ Goals/tasks that were met/completed:
  * If a goal/task was not part of the original iteration plan, please mention it.
  * For each goal/task, refer to artifact(s) that show that it was met/completed.
 
+ * Static landing page 
+ * Diagram of workflow narrative 
+
 Goals/tasks that were planned but not met/completed:
 
  * List goals/tasks, from most to least important.
  * For each goal/task, explain why it was not met/completed.      
    e.g. Did you change your mind, or did you just not get to it yet?
+
+ * Design spec document 
 
 (Optional) Goals/tasks that were not originally planned, but ended up being not met/completed:
 
