@@ -12,8 +12,11 @@ The final product will be available as a web application across all platforms.
 Our target users are mainly college students and millenials who like to move homes, or re-design frequently.
 
 User Personas
+Buyer Personas
 * https://app.xtensio.com/edit/zhkitstj
 * https://app.xtensio.com/edit/frqck3ly
+Seller Persona
+* https://app.xtensio.com/folio/62v2b3p4
    
 
 #### Q3: Why would your users choose your product? What are they using today to solve their problem?
