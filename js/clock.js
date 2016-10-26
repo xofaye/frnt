@@ -7,9 +7,9 @@ function showTime() {
     var minuteInMilliseconds = 60 * 1000;
     var secondInMilliseconds = 1000;
     var day = Math.floor(diff / dayInMilliseconds);
-    var hour = Math.floor( (diff - day * dayInMilliseconds) / hourInMilliseconds);
-    var minute = Math.floor( (diff - day * dayInMilliseconds - hour * hourInMilliseconds) / minuteInMilliseconds);
-    var second = Math.floor( (diff - day * dayInMilliseconds - hour * hourInMilliseconds - minute * minuteInMilliseconds) / secondInMilliseconds);
+    var hour = Math.floor((diff - day * dayInMilliseconds) / hourInMilliseconds);
+    var minute = Math.floor((diff - day * dayInMilliseconds - hour * hourInMilliseconds) / minuteInMilliseconds);
+    var second = Math.floor((diff - day * dayInMilliseconds - hour * hourInMilliseconds - minute * minuteInMilliseconds) / secondInMilliseconds);
         
     hour = formatTime(hour);
     minute = formatTime(minute);

@@ -54,6 +54,14 @@
 - Made changes to how the product works from feedback given in tutorials
 
 #### Goals and tasks
+- Design the user experience workflow
+- Design the user interface
+- Create a placeholder/landing page
+- Create a development process document
+- Set up proper communication channels
+
+
+#### Artifact
 
 - Diagram of workflow in the application
 - Mock-up for landing/about page
