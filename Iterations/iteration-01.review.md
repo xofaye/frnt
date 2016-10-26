@@ -14,46 +14,34 @@ During our planning meeting, we were able to decide on an idea and justify why i
 
 Decisions turned out well:
 
- * List a few (2-5) decisions, from most to least important.
- * Support your argument (that a decisions was successful) by referring/linking to process artifact(s).
+ - Setting up our communication tools was the most important decision we made since it was crucial that we had a reliable form of communication to set-up meetings and work away from each other.
+ - In-person meetings were fairly efficient when we do get together; a good amount of work was completed.
 
+ 
 Decisions did not turn out as well as you hoped:
 
- * Once again, list a few (2 - 5) decisions, from most to least important.
- * As before, support your arguments by referring/linking to process artifacts.
+ - Our merging process was inefficient and a lot of overlapping conflicts occurred.
+ - Getting every single member to meet up in-person everytime was difficult as we all had different schedules and some members lived fairly far away from optimal meeting locations.
+
 
 We are planning to make the following changes to our process:
 
- * List the changes you are planning to make, if any, from most to least important.
- * For each change, explain why you are making it by referring to a decision that didn't work well.
+ - Changing up the merging process would be our immediate priority. One member proposes to write up a document that identifies and suggests resolutions for conflicting merges to avoid further issues and improve efficiency
 
 
 ## Product - Review
 
 Goals/tasks that were met/completed:
 
- * List goals/tasks, from most to least important.
- * If a goal/task was not part of the original iteration plan, please mention it.
- * For each goal/task, refer to artifact(s) that show that it was met/completed.
+ - Creating the static landing page early is a good idea as well for visualizing the workflow of the website. We can get a sense of what the website looks like without having to go as far as to code in the backend immediately.
+ - Creating a diagram for the workflow of the application as one of our first steps was also useful as it acts as a blueprint and helps us visualize when we create the website.
 
- * Static landing page 
- * Diagram of workflow narrative 
 
 Goals/tasks that were planned but not met/completed:
 
- * List goals/tasks, from most to least important.
- * For each goal/task, explain why it was not met/completed.      
-   e.g. Did you change your mind, or did you just not get to it yet?
-
- * Design spec document 
-
-(Optional) Goals/tasks that were not originally planned, but ended up being not met/completed:
-
- * List goals/tasks, from most to least important.
- * For each goal/task, explain why you decided to change your plan and add this goal/task.
-
+ - Setting up the task on step-by-step guides for processes from picking up an item from the backlog to releasin an update. We are currently too early into the process to make use of it.
 
 Going into the next iteration, our main insights are:
 
- * List the few (2-5) high-level concepts that should guide your work for the next few weeks.
- * These concepts should help you prioritize features and decide on where to focus your efforts.
+ - Attempt to maintain a consistent, concise idea of what we are attempting to build
+ - Prioritize the larger goals/features of the website before working into the more detailed features
