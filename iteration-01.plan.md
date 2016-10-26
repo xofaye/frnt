@@ -37,26 +37,22 @@
 
 #### Events
 
-Every tuesday after tutorial for an hour in person.
-
-Please describe the meetings you planning to have:
- * When and where? In-person or online?
- * What's the purpose of each meeting?
-
  * Planning meeting (online): 
      * Identify problem being solved 
      * Decide on product functionality 
      * Define user group and target users 
  * Review meeting: 
-     * 
+     * Discuss goals that we made during the planning and scrum meeting
+     * Reflect on which goals were not met and why 
+     * Made changes to how the product works from feedback given in tutorials
+ * Scrum meeting: 
+ 	 * Every Tuesday after tutorial for 30 minutes (in-person)
+ 	 * Share what each member has accomplished in the last week, what's blocking them and what they will work on for the coming week
 
 #### Artifacts
 
-Please describe the artifacts that you will produce in order to organize and keep track of your team's progress.       
-For example:
- * To-do lists, burndown chart, schedule, etc.
- * If you include charts/diagrams, make sure to explain what they represent.
- * If you're maintaining a to-do list, make sure to mention which tool you're using, how you are prioritizing items and how items get assigned to team members.
+ * We are using Git issues to track our tasks and assign them to members of our group 
+ * In addition, we are using Slack and Google Calendar as a collaboration tool for communication and scheduling 
 
 
 ## Product
@@ -68,11 +64,7 @@ Goals and tasks:
  * Feel free (but not obligated) to specify some/all tasks as user stories.
 
 Artifacts
-
- * Describe the artifacts (diagrams, interactive mock-ups, wireframes, actual code, etc.)
-   that you are planning to produce by the end of (and during) this iteration.
- * Be precise.         
-   For example: "Build the website" is not precise at all, but "Build a static home page and upload it somewhere, so that it is publicly accessible" is much clearer.
    
- * Build a static home page and upload it somewhere so that it is publicly accessible 
- * 
+ * Build a static home page with a countdown and upload it somewhere 
+ * Set up the backend framework with log-in features 
+ * Create two wireframes, one from the user perspective and one from the seller perspective 
