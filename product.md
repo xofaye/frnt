@@ -21,8 +21,8 @@ Seller Persona
 
 #### Q3: Why would your users choose your product? What are they using today to solve their problem?
 
-Frnt is a platform where users can lease/rent furnitures for short periods of time.
+FrnT is a platform where users can lease/rent furnitures for short periods of time.
 
-Furnishing new homes can be a chore for students and young professionals who do not own homes in highly populated cities such as San Francisco, NYC and Toronto where renting is the norm. Owning furniture is a pain; moving is a hassle.
+Furnishing new homes can be a chore for students and young professionals who do not own homes in highly populated cities such as San Francisco, NYC and Toronto where renting is the norm. Owning furniture is a pain and moving is a hassle.
 
-Frnt allows people to have beautifully designed homes while potentially saving lots of money. Seasonal visitors would be able to experience the local artisanal furniture culture without committing to ownership, renovate as frequently as they want.
+FrnT allows people to have beautifully designed homes while potentially saving lots of money. Seasonal visitors would be able to experience the local artisanal furniture culture without committing to ownership and renovate as frequently as they want.
