@@ -21,3 +21,9 @@ class SignUpForm(UserCreationForm):
         if commit:
             user.save()
         return user
+
+
+class SearchFurnitureForm(forms.ModelForm):
+    min_price = forms.IntegerField(min_value=0)
+    max_price = forms.IntegerField(min_value=0)
+    location = forms.CharField()
