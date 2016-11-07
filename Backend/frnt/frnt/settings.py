@@ -35,6 +35,7 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
+    'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'main',
@@ -108,3 +109,5 @@ CRISPY_FAIL_SILENTLY = not DEBUG
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/dashboard'
+
+SITE_ID = 1
