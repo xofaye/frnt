@@ -1,7 +1,6 @@
 import logging
 
 from django.contrib.auth.decorators import login_required
-from django.core.context_processors import csrf
 from django.shortcuts import render, redirect
 from django.utils.decorators import method_decorator
 from jsonview.decorators import json_view
@@ -32,7 +31,7 @@ def register_user(request):
             form.save()
             return redirect('home')
     args = {}
-    args.update(csrf(request))
+    #args.update(csrf(request))
     args['form'] = SignUpForm()
     return render(request, 'register.html', args)
 
