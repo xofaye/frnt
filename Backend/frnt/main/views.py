@@ -21,6 +21,10 @@ def home(request):
     return render(request, 'index.html', context)
 
 
+def dashboard(request):
+    return render(request, 'dashboard.html')
+
+
 def register_user(request):
     if request.method == 'POST':
         form = SignUpForm(request.POST)     # create form object
