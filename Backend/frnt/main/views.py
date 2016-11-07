@@ -6,7 +6,8 @@ from django.utils.decorators import method_decorator
 from jsonview.decorators import json_view
 
 from .services import furniture_search
-from .forms import SignUpForm
+from .forms import SignUpForm, SearchFurnitureForm
+from .models import FnrtListing
 
 
 class LoginRequiredMixin:
@@ -44,7 +45,7 @@ def search_furniture(request):
             min_price = form.cleaned_data['min_price']
             max_price = form.cleaned_data['max_price']
             location = form.cleaned_data['location']
-            results = FrntListing.objects.raw('SELECT * FROM FnrtListing '
+            results = FnrtListing.objects.raw('SELECT * FROM FnrtListing '
                                               'WHERE price >= %s AND price <= %s AND location == %s',
                                               min_price, max_price, location)
 
