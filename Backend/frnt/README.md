@@ -19,7 +19,7 @@ comes with virtualenv built-in. So create a virtual env by:
 
 Install all dependencies:
 
-    pip3s install -r requirements.txt
+    pip3 install -r requirements.txt
 
 Run migrations:
 
