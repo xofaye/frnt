@@ -1,11 +1,13 @@
 import logging
 
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render
+from django.core.context_processors import csrf
+from django.shortcuts import render, redirect
 from django.utils.decorators import method_decorator
 from jsonview.decorators import json_view
 
 from .services import furniture_search
+from .forms import SignUpForm
 
 
 class LoginRequiredMixin:
@@ -17,6 +19,18 @@ class LoginRequiredMixin:
 def home(request):
     context = {}
     return render(request, 'index.html', context)
+
+
+def register_user(request):
+    if request.method == 'POST':
+        form = SignUpForm(request.POST)     # create form object
+        if form.is_valid():
+            form.save()
+            return redirect('/')
+    args = {}
+    args.update(csrf(request))
+    args['form'] = SignUpForm()
+    return render(request, 'register.html', args)
 
 @login_required
 @json_view
