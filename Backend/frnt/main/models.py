@@ -24,7 +24,7 @@ class FnrtUser(models.Model):
         email
     '''
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    location = models.OneToOneField('Location')
+    location = models.OneToOneField('Location', blank=True)
     profile_image = models.ImageField(upload_to=get_image_path, blank=True)
     biography = models.CharField(max_length=500, blank=True)
     rating = models.DecimalField(default=0, max_digits=3, decimal_places=2)
@@ -37,3 +37,4 @@ class FnrtListing(models.Model):
     description = models.CharField(max_length=500, blank=True)
     picture = models.ImageField(upload_to=get_image_path, blank=True)
     price = models.DecimalField(default=0, max_digits=10, decimal_places=2)
+    location = models.OneToOneField('Location')
