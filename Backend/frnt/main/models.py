@@ -29,3 +29,11 @@ class FnrtUser(models.Model):
 
     rating = models.DecimalField(default=0, decimal_places=2)
     rating_count = models.IntegerField(default=0)
+
+class FnrtListing(models.Model):
+    user = models.ForeignKey('FnrtUser', unique=True)
+    title = models.CharField(max_length=100)
+    description = models.CharField(max_length=500, blank=True)
+    picture = models.ImageField(upload_to=get_image_path, blank=True)
+    tags = models.ManyToManyField(models.CharField(max_length=25))
+    price = models.DecimalField(default=0, decimal_places=2)
