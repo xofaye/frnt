@@ -24,7 +24,7 @@ class FnrtUser(models.Model):
     location = models.OneToOneField('Location')
     profile_image = models.ImageField(upload_to=get_image_path, blank=True)
     biography = models.CharField(max_length=500, blank=True)
-    rating = models.DecimalField(default=0, decimal_places=2)
+    rating = models.DecimalField(default=0, max_digits=3, decimal_places=2)
     rating_count = models.IntegerField(default=0)
 
 class FnrtListing(models.Model):
@@ -32,4 +32,4 @@ class FnrtListing(models.Model):
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=500, blank=True)
     picture = models.ImageField(upload_to=get_image_path, blank=True)
-    price = models.DecimalField(default=0, decimal_places=2)
+    price = models.DecimalField(default=0, max_digits=10, decimal_places=2)
