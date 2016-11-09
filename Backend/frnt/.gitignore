@@ -1,5 +1,7 @@
+##
+# Django gitignore
+# 
 db.sqlite3
-main/migrations/
 
 ##
 # Python gitignore

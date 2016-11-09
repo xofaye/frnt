@@ -14,7 +14,7 @@ class Location(models.Model):
     street_address = models.CharField(max_length=100)
 
 
-class FrnTUser(models.Model):
+class User(models.Model):
     '''
     User:
         username
@@ -31,8 +31,8 @@ class FrnTUser(models.Model):
     rating_count = models.IntegerField(default=0)
 
 
-class FrnTListing(models.Model):
-    user = models.ForeignKey('FrnTUser', unique=True)
+class Listing(models.Model):
+    user = models.ForeignKey('User', unique=True)
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=500, blank=True)
     picture = models.ImageField(upload_to=get_image_path, blank=True)
