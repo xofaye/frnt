@@ -39,6 +39,7 @@ def register_user(request):
 @login_required
 @json_view
 def search_furniture(request):
+    results = {}
     if request.method == 'POST':
         form = SearchFurnitureForm(request.POST)
         if form.is_valid():
@@ -46,9 +47,10 @@ def search_furniture(request):
             max_price = form.cleaned_data['max_price']
             location = form.cleaned_data['location']
             results = FnrtListing.objects.raw('SELECT * FROM FnrtListing '
-                                              'WHERE price >= %s AND price <= %s AND location == %s',
+                                              + 'WHERE price >= %s AND price <= %s AND location == %s',
                                               min_price, max_price, location)
 
-            return results
-    logging.warning(request.GET.get('q'))
-    return furniture_search(request.GET['q'])
+            return render(request, 'search.html', results)
+    args = {}
+    args['form'] = SearchFurnitureForm()
+    return render(request, 'search.html', args)

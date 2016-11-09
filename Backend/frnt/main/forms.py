@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
+from .models import FnrtListing
 
 
 class SignUpForm(UserCreationForm):
@@ -23,7 +24,7 @@ class SignUpForm(UserCreationForm):
         return user
 
 
-class SearchFurnitureForm(forms.ModelForm):
+class SearchFurnitureForm(forms.Form):
     min_price = forms.IntegerField(min_value=0)
     max_price = forms.IntegerField(min_value=0)
     location = forms.CharField()
