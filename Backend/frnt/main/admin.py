@@ -2,16 +2,16 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import FrnTUser, Location, FrnTListing
+from .models import User, Location, Listing
 
 @admin.register(Location)
 class LocationAdmin(admin.ModelAdmin):
     pass
 
-@admin.register(FrnTUser)
-class FrnTUserAdmin(admin.ModelAdmin):
+@admin.register(User)
+class UserAdmin(admin.ModelAdmin):
     pass
 
-@admin.register(FrnTListing)
-class FrnTListingAdmin(admin.ModelAdmin):
+@admin.register(Listing)
+class ListingAdmin(admin.ModelAdmin):
     pass

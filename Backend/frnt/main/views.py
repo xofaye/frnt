@@ -7,7 +7,7 @@ from jsonview.decorators import json_view
 
 from .services import furniture_search
 from .forms import SignUpForm, SearchFurnitureForm
-from .models import FrnTListing
+from .models import Listing
 
 
 class LoginRequiredMixin:
@@ -46,7 +46,7 @@ def search_furniture(request):
             min_price = form.cleaned_data['min_price']
             max_price = form.cleaned_data['max_price']
             location = form.cleaned_data['location']
-            results = FrnTListing.objects.raw('SELECT * FROM FnrtListing '
+            results = Listing.objects.raw('SELECT * FROM main_listing '
                                               + 'WHERE price >= %s AND price <= %s AND location == %s',
 
                                               min_price, max_price, location)
