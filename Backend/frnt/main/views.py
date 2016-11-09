@@ -7,7 +7,7 @@ from jsonview.decorators import json_view
 
 from .services import furniture_search
 from .forms import SignUpForm, SearchFurnitureForm
-from .models import FnrtListing
+from .models import FrnTListing
 
 
 class LoginRequiredMixin:
@@ -46,8 +46,9 @@ def search_furniture(request):
             min_price = form.cleaned_data['min_price']
             max_price = form.cleaned_data['max_price']
             location = form.cleaned_data['location']
-            results = FnrtListing.objects.raw('SELECT * FROM FnrtListing '
+            results = FrnTListing.objects.raw('SELECT * FROM FnrtListing '
                                               + 'WHERE price >= %s AND price <= %s AND location == %s',
+
                                               min_price, max_price, location)
 
             return render(request, 'search.html', results)
