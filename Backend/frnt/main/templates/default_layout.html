@@ -32,13 +32,21 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="#">Project name</a>
+          <a class="navbar-brand" href="/">FrnT</a>
         </div>
         <div id="navbar" class="collapse navbar-collapse">
           <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
+            <!-- Left-aligned menu items -->
+          </ul>
+          <form action="/search/" method="POST" class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+              <input type="text" class="form-control" placeholder="Search furniture now" size="32">
+            </div>
+            <button type="submit" class="btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+          </form><!-- /.navbar-form -->
+          <ul class="nav navbar-nav navbar-right">
+            <li><a href="/login/">Sign In</a></li>
+            <li><a href="/register/">Sign Up</a></li>
           </ul>
         </div><!--/.nav-collapse -->
       </div>
@@ -48,8 +56,14 @@
       {% block content %}{% endblock %}
     </div><!-- /.container -->
 
+    <footer class="footer">
+      <div class="container">
+        <p class="text-muted">&copy; 2016 Team FrnT for CSC301, Fall 2016, at University of Toronto.</p>
+      </div>
+    </footer>
 
     <!-- Latest compiled and minified JavaScript -->
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     {% block tail %}{% endblock %}
   </body>
