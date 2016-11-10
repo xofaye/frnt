@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 from django.utils.decorators import method_decorator
 from jsonview.decorators import json_view
+from django.core import serializers
 
 from .services import furniture_search
 from .forms import SignUpForm, SearchFurnitureForm
@@ -39,19 +40,17 @@ def register_user(request):
 @login_required
 @json_view
 def search_furniture(request):
-    results = {}
+    response = {}
     if request.method == 'POST':
         form = SearchFurnitureForm(request.POST)
         if form.is_valid():
             min_price = form.cleaned_data['min_price']
             max_price = form.cleaned_data['max_price']
             location = form.cleaned_data['location']
-            results = Listing.objects.raw('SELECT * FROM main_listing '
-                                              + 'WHERE price >= %s AND price <= %s AND location == %s',
 
-                                              min_price, max_price, location)
-
-            return render(request, 'search.html', results)
+            query_set = Listing.objects.filter(price__gte=min_price, price__lte=max_price)
+            query_set = serializers.serialize('json', query_set)
+            return query_set
     args = {}
     args['form'] = SearchFurnitureForm()
     return render(request, 'search.html', args)
