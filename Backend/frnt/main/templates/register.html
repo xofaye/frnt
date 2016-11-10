@@ -1,16 +1,13 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Registration Page</title>
-</head>
-<body>
-    <h1>Register here!</h1>
+{% extends "default_layout.html" %}
 
-    <form method="post" action=".">
-        {{ form.as_p }}
-        <input type="submit" value="register" />
-        {% csrf_token %}
-        </form>
+{% block title %}Sign Up | FrnT{% endblock %}
 
-</body>
-</html>
+{% block content %}
+  <h1>Register here!</h1>
+
+  <form method="post" action=".">
+    {{ form.as_p }}
+    <input type="submit" value="register" />
+    {% csrf_token %}
+  </form>
+{% endblock %}
