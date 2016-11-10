@@ -7,7 +7,8 @@
 .header-row .header-name {
   position: relative;
   float: left;
-  font-size: 128px;
+  font-size: 150px;
+  /*font-size: 128px;*/
   color: rgb(46, 62, 70);
 }
 
@@ -17,7 +18,8 @@
 
   margin-top: 75px;
   margin-bottom: 10px;
-  font-size: 23px;
+  font-size: 30px;
+  /*font-size: 23px*/
   font-weight: 400;
   /*color: rgb(46, 62, 70);*/
   text-shadow: -1px -1px 0 rgba(190, 190, 190, 0.5), 1px -1px 0 rgba(190, 190, 190, 0.5), -1px 1px 0 rgba(190, 190, 190, 0.5), 1px 1px 0 rgba(190, 190, 190, 0.5);
@@ -60,3 +62,4 @@
 .search form.form-inline button.search-button .glyphicon {
   opacity: 0.6;
 }
+
