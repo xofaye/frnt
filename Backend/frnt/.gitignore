@@ -1,4 +1,9 @@
 ##
+# Django gitignore
+# 
+db.sqlite3
+
+##
 # Python gitignore
 # cf. https://github.com/github/gitignore/blob/master/Python.gitignore
 # Byte-compiled / optimized / DLL files
@@ -82,6 +87,7 @@ celerybeat-schedule
 .env
 
 # virtualenv
+.virtualenv
 .venv/
 venv/
 ENV/

@@ -6,7 +6,8 @@ from django.utils.decorators import method_decorator
 from jsonview.decorators import json_view
 
 from .services import furniture_search
-from .forms import SignUpForm
+from .forms import SignUpForm, SearchFurnitureForm
+from .models import Listing
 
 
 class LoginRequiredMixin:
@@ -38,5 +39,19 @@ def register_user(request):
 @login_required
 @json_view
 def search_furniture(request):
-    logging.warning(request.GET.get('q'))
-    return furniture_search(request.GET['q'])
+    results = {}
+    if request.method == 'POST':
+        form = SearchFurnitureForm(request.POST)
+        if form.is_valid():
+            min_price = form.cleaned_data['min_price']
+            max_price = form.cleaned_data['max_price']
+            location = form.cleaned_data['location']
+            results = Listing.objects.raw('SELECT * FROM main_listing '
+                                              + 'WHERE price >= %s AND price <= %s AND location == %s',
+
+                                              min_price, max_price, location)
+
+            return render(request, 'search.html', results)
+    args = {}
+    args['form'] = SearchFurnitureForm()
+    return render(request, 'search.html', args)

@@ -19,28 +19,20 @@ comes with virtualenv built-in. So create a virtual env by:
 
 Install all dependencies:
 
-    pip install -r requirements.txt
+    pip3 install -r requirements.txt
 
 Run migrations:
 
-    python manage.py makemigrations main
-    python manage.py migrate
+    python3 manage.py makemigrations main
+    python3 manage.py migrate
 
 Create a superuser *(optional)*:
 
-    python manage.py createsuperuser
-
-Create the greeter:
-
-    python manage.py create_greeter
-
-Setup the Django sites framework:
-
-    python manage.py setup_site
+    python3 manage.py createsuperuser
 
 Start up the dev server:
 
-    python manage.py runserver
+    python3 manage.py runserver
 
 ### Development
 
