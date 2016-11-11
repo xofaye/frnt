@@ -15,10 +15,15 @@ class Location(models.Model):
     postal_code = models.CharField(max_length=15)
     street_address = models.CharField(max_length=100)
 
+    def __str__(self):
+        parts = [self.street_address, self.city, self.postal_code, self.country]
+        non_empty_parts = [part for part in parts if part]
+        return ', '.join(non_empty_parts)
+
 
 class Profile(models.Model):
     '''
-    User:
+    auth.User:
         username
         password
         first_name

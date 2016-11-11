@@ -1,14 +1,15 @@
 import logging
 
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth import logout
 from django.shortcuts import render, redirect
 from django.utils.decorators import method_decorator
 from jsonview.decorators import json_view
 from django.core import serializers
 
 from .services import furniture_search
-from .forms import SignUpForm, SearchFurnitureForm
-from .models import Listing
+from .forms import SignUpForm, SearchFurnitureForm, EditProfileForm, LocationForm
+from .models import Listing, Location
 
 
 class LoginRequiredMixin:
@@ -24,6 +25,11 @@ def home(request):
 
 def dashboard(request):
     return render(request, 'dashboard.html')
+
+
+def logout_success(request):
+    logout(request)
+    return render(request, 'logout_success.html')
 
 
 def register_user(request):
@@ -54,3 +60,32 @@ def search_furniture(request):
     args = {}
     args['form'] = SearchFurnitureForm()
     return render(request, 'search.html', args)
+
+@login_required
+def edit_profile(request):
+    l = None
+    loc_form = LocationForm(request.POST or None)
+    form = EditProfileForm(request.POST or None)
+    if request.method == 'POST':
+        if loc_form.is_valid():
+            street_address = loc_form.cleaned_data['street_address']
+            city = loc_form.cleaned_data['city']
+            postal_code = loc_form.cleaned_data['postal_code']
+            country = loc_form.cleaned_data['country']
+            if street_address or city or postal_code or country:
+                l = Location.objects.create(street_address=street_address, city=city,
+                                        postal_code=postal_code, country=country)
+        profile = request.user.profile
+        if form.is_valid():
+            if l:
+                profile.location = l
+            profile.profile_image = form.cleaned_data['profile_image']
+            profile.biography = form.cleaned_data['biography']
+            profile.save()
+            return redirect('home')
+    return render(request, 'edit_profile.html', {'form': form, 'loc_form': loc_form})
+
+
+def view_profile(request):
+    context = {'user': request.user.user}
+    return render(request, 'main/view_profile.html', context)
