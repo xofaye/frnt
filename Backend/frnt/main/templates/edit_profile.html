@@ -1,0 +1,15 @@
+{% extends "default_layout.html" %}
+
+{% block title %}Edit Profile | FrnT{% endblock %}
+
+{% block content %}
+  <h1>Update profile</h1>
+
+  <form method="post" action=".">
+    {{ loc_form.as_p }}
+
+    {{ form.as_p }}
+    <input type="submit" value="Save changes" />
+    {% csrf_token %}
+  </form>
+{% endblock %}

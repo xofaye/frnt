@@ -1,7 +1,9 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
-from .models import Listing
+
+from .models import Listing, Profile, Location
+from .models import get_image_path
 
 
 class SignUpForm(UserCreationForm):
@@ -28,3 +30,23 @@ class SearchFurnitureForm(forms.Form):
     min_price = forms.IntegerField(min_value=0)
     max_price = forms.IntegerField(min_value=0)
     location = forms.CharField()
+
+
+class EditProfileForm(forms.ModelForm):
+    profile_image = forms.ImageField(required=False)
+    biography = forms.CharField(max_length=500, required=False)
+
+    class Meta:
+        model = Profile
+        fields = ('profile_image', 'biography')
+
+
+class LocationForm(forms.ModelForm):
+    street_address = forms.CharField(max_length=100, required=False)
+    city = forms.CharField(max_length=50, required=False)
+    postal_code = forms.CharField(max_length=15, required=False)
+    country = forms.CharField(max_length=50, required=False)
+
+    class Meta:
+        model = Location
+        fields = ('street_address', 'city', 'postal_code', 'country')

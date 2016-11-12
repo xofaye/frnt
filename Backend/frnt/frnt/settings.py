@@ -112,5 +112,6 @@ CRISPY_FAIL_SILENTLY = not DEBUG
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/dashboard'
+LOGOUT_REDIRECT_URL = '/logout_success'
 
 SITE_ID = 1
