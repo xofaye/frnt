@@ -2,14 +2,14 @@ import logging
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.decorators import method_decorator
 from jsonview.decorators import json_view
 from django.core import serializers
 
 from .services import furniture_search
 from .forms import SignUpForm, SearchFurnitureForm, EditProfileForm, LocationForm
-from .models import Listing, Location
+from .models import Listing, Location, Profile
 
 
 class LoginRequiredMixin:
@@ -89,6 +89,8 @@ def edit_profile(request):
     return render(request, 'edit_profile.html', {'form': form, 'loc_form': loc_form})
 
 
-def view_profile(request):
-    context = {'user': request.user.user}
-    return render(request, 'main/view_profile.html', context)
+def view_profile(request, username):
+    profile = get_object_or_404(Profile, user__username__iexact=username)
+
+    context = {'user': request.user, 'profile': profile}
+    return render(request, 'view_profile.html', context)
