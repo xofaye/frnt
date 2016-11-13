@@ -1,0 +1,20 @@
+{% extends "default_layout.html" %}
+
+{% block title %}Listings | FrnT{% endblock %}
+
+{% block content %}
+  <table>
+    <tr>
+      <th>Title</th>
+      <th>Price</th>
+      <th>Location</th>
+    </tr>
+  {% for listing in data %}
+    <tr>
+      <th>{{ listing.title }}</th>
+      <th>{{ listing.price }}</th>
+      <th>{{ listing.location }}</th>
+    </tr>
+  {% endfor %}
+  </table>
+{% endblock %}
