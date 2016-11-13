@@ -56,10 +56,10 @@ def search_furniture(request):
 
             query_set = Listing.objects.filter(price__gte=min_price, price__lte=max_price,
                                                location__city__contains=location, location__country__contains=location)
-            query_set = serializers.serialize('json', query_set)
+            query_set2 = serializers.serialize('json', query_set)
+            print (query_set2)
 
-            #return render(request, 'listings.html', query_set)
-            return query_set
+            return render(request, 'listings.html', {'data': query_set})
     args = {}
     args['form'] = SearchFurnitureForm()
     return render(request, 'search.html', args)
