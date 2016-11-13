@@ -27,9 +27,9 @@ class SignUpForm(UserCreationForm):
 
 
 class SearchFurnitureForm(forms.Form):
-    min_price = forms.IntegerField(min_value=0)
-    max_price = forms.IntegerField(min_value=0)
-    location = forms.CharField()
+    min_price = forms.IntegerField(initial=0, required=False)
+    max_price = forms.IntegerField(initial=9999999999, required=False)
+    location = forms.CharField(max_length=100, required=False)
 
 
 class EditProfileForm(forms.ModelForm):
