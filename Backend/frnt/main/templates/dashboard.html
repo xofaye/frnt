@@ -22,7 +22,7 @@ Create new listing <br>
 {% if listings %}
 {% for listing in listings %}
 <div style="border:1px solid black; width:500px; margin:5px; padding: 5px">
-<a href="listing.get_url">{{ listing.title }}</a><br>
+<a href="{{ listing.get_url }}">{{ listing.title }}</a><br>
 Price: {{ listing.price}}<br>
 Location: {{ listing.location }}<br>
 Description: {{ listing.description }}
