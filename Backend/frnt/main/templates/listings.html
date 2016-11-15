@@ -11,7 +11,8 @@
     </tr>
   {% for listing in data %}
     <tr>
-      <th>{{ listing.title }}</th>
+      {% url 'listing/{{listing.id}}' as the_url %}
+      <th><a href="{{ listing.get_url }}">{{ listing.title }}</a></th>
       <th>{{ listing.price }}</th>
       <th>{{ listing.location }}</th>
     </tr>

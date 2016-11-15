@@ -54,3 +54,6 @@ class Listing(models.Model):
     picture = models.ImageField(upload_to=get_image_path, blank=True)
     price = models.DecimalField(default=0, max_digits=10, decimal_places=2)
     location = models.OneToOneField('Location')
+
+    def get_url(self):
+        return "/listing/" + str(self.id)
