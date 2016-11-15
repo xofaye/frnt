@@ -4,4 +4,10 @@
 
 {% block content %}
   <h1>Add Listing</h1>
+
+  <form method="post" action="/listing/add">
+    {{ form.as_p }}
+    <input type="submit" value="Submit" />
+    {% csrf_token %}
+  </form>
 {% endblock %}

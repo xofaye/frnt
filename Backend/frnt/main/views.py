@@ -111,23 +111,23 @@ def view_listing(request, id):
     return render(request, 'view_listing.html', context)
 
 def add_listing(request):
-    form = AddListingForm(request.POST)
-    if form.is_valid():
-        form.save()
-        return redirect('home')
-
+    if request.method == 'POST':
+        form = AddListingForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
     context = {
-        'form': form
+        'form': AddListingForm()
     }
     return render(request, 'add_listing.html', context)
 
 def edit_listing(request):
-    form = EditListingForm(request.POST)
-    if form.is_valid():
-        form.save()
-        return redirect('home')
-
+    if request.method == 'POST':
+        form = EditListingForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
     context = {
-        'form': form
+        'form': EditListingForm()
     }
     return render(request, 'edit_listing.html', context)
