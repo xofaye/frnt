@@ -109,3 +109,9 @@ def view_listing(request, id):
 
     context = {'user': request.user, 'listing': listing}
     return render(request, 'view_listing.html', context)
+
+def add_posting(request):
+    return render(request, 'add_posting.html', {})
+
+def edit_posting(request):
+    return render(request, 'edit_posting.html', {})
