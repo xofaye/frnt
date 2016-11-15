@@ -46,7 +46,6 @@
           </form><!-- /.navbar-form -->
           <ul class="nav navbar-nav navbar-right">
              {% if request.user.is_authenticated %}
-              <li><a href="/profile/edit">Edit Your Profile</a></li>
               <li><a href="/logout/">Sign Out</a></li>
              {% else %}
               <li><a href="/login/">Sign In</a></li>
