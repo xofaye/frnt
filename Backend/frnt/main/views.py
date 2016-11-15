@@ -94,3 +94,10 @@ def view_profile(request, username):
 
     context = {'user': request.user, 'profile': profile}
     return render(request, 'view_profile.html', context)
+
+
+def view_listing(request, id):
+    listing = get_object_or_404(Listing, id__iexact=id)
+
+    context = {'user': request.user, 'listing': listing}
+    return render(request, 'view_listing.html', context)

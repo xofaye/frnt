@@ -1,0 +1,20 @@
+{% extends "default_layout.html" %}
+
+{% block head %}
+  <!-- Put anything you want between the <head></head> here -->
+{% endblock %}
+
+{% block title %}{{ listing.title }} | FrnT{% endblock %}
+
+{% block content %}
+<h1>{{ listing.title }}</h1>
+{{ listing.picture }}
+        Posted by {{ listing.user.username }} <br>
+Price: {{ listing.price }} <br>
+Location: {{ listing.location }} <br>
+Description: {{ listing.description }} <br>
+{% endblock %}
+
+{% block tail %}
+  <!-- This content will appear just before </body> tag -->
+{% endblock %}
