@@ -8,7 +8,7 @@ from jsonview.decorators import json_view
 from django.core import serializers
 
 from .services import furniture_search
-from .forms import SignUpForm, SearchFurnitureForm, EditProfileForm, LocationForm
+from .forms import SignUpForm, SearchFurnitureForm, EditProfileForm, LocationForm, AddListingForm, EditListingForm
 from .models import Listing, Location, Profile
 
 
@@ -111,7 +111,23 @@ def view_listing(request, id):
     return render(request, 'view_listing.html', context)
 
 def add_posting(request):
-    return render(request, 'add_posting.html', {})
+    form = AddListingForm(request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect('home')
+
+    context = {
+        'form': form
+    }
+    return render(request, 'add_posting.html', context)
 
 def edit_posting(request):
-    return render(request, 'edit_posting.html', {})
+    form = EditListingForm(request.POST)
+    if form.is_valid():
+        form.save()
+        return redirect('home')
+
+    context = {
+        'form': form
+    }
+    return render(request, 'edit_posting.html', context)
