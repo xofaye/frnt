@@ -19,12 +19,13 @@ class LoginRequiredMixin:
 
 
 def home(request):
-    context = {}
-    return render(request, 'index.html', context)
+    return render(request, 'index.html')
 
 
 def dashboard(request):
-    return render(request, 'dashboard.html')
+    listings = Listing.objects.all()[:5]
+    context = {'listings': listings}
+    return render(request, 'dashboard.html', context)
 
 
 def logout_success(request):
@@ -37,7 +38,7 @@ def register_user(request):
         form = SignUpForm(request.POST)     # create form object
         if form.is_valid():
             form.save()
-            return redirect('home')
+            return redirect('dashboard')
     args = {}
     #args.update(csrf(request))
     args['form'] = SignUpForm()

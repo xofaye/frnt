@@ -9,9 +9,28 @@
 {% block content %}
 <h1>Dashboard</h1>
 
-Hi {{ request.user.first_name }}, welcome to FrnT! Thanks for joining us.
+Hi {{ request.user.first_name }}, welcome to FrnT! Thanks for joining us. <br>
+
+<div style="border:1px solid black; width:200px; padding:5px; margin:5px">
+<b>Menu</b><br>
+Create new listing <br>
+<a href="/search">Search for furniture</a> <br>
+<a href="/profile/edit">Edit your profile</a>
+</div>
 
 <h2>Recent Listings</h2>
+{% if listings %}
+{% for listing in listings %}
+<div style="border:1px solid black; width:500px; margin:5px; padding 5px">
+<a href="listing.get_url">{{ listing.title }}</a><br>
+Price: {{ listing.price}}<br>
+Location: {{ listing.location }}<br>
+Description: {{ listing.description }}
+</div>
+{% endfor %}
+{% else %}
+No recent listings
+{% endif %}
 
 {% endblock %}
 
