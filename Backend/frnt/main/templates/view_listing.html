@@ -9,7 +9,7 @@
 {% block content %}
 <h1>{{ listing.title }}</h1>
 {{ listing.picture }}
-        Posted by {{ listing.user.username }} <br>
+        Posted by <a href="/{{listing.user.user.username}}">{{ listing.user.user.username }}</a> <br>
 Price: {{ listing.price }} <br>
 Location: {{ listing.location }} <br>
 Description: {{ listing.description }} <br>
