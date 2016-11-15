@@ -38,7 +38,7 @@ def register_user(request):
         form = SignUpForm(request.POST)     # create form object
         if form.is_valid():
             form.save()
-            return redirect('dashboard')
+            return redirect('login')
     args = {}
     #args.update(csrf(request))
     args['form'] = SignUpForm()
