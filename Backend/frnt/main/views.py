@@ -110,7 +110,7 @@ def view_listing(request, id):
     context = {'user': request.user, 'listing': listing}
     return render(request, 'view_listing.html', context)
 
-def add_posting(request):
+def add_listing(request):
     form = AddListingForm(request.POST)
     if form.is_valid():
         form.save()
@@ -119,9 +119,9 @@ def add_posting(request):
     context = {
         'form': form
     }
-    return render(request, 'add_posting.html', context)
+    return render(request, 'add_listing.html', context)
 
-def edit_posting(request):
+def edit_listing(request):
     form = EditListingForm(request.POST)
     if form.is_valid():
         form.save()
@@ -130,4 +130,4 @@ def edit_posting(request):
     context = {
         'form': form
     }
-    return render(request, 'edit_posting.html', context)
+    return render(request, 'edit_listing.html', context)
