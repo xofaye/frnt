@@ -8,32 +8,30 @@
 
 ## Process
 
-> (Optional:) Introduction
 
 #### Roles & responsibilities
 
-> Describe the different roles (e.g. developers, communication facilitator,
-proof-reader, etc.) on the team, and the responsibilities associated with each role.
 
-> ##### Repo Manager
->
-> - Ticket creation
-> - Code review
-> - Style/lint enforcement
-> - Merge of pull requests
-> - Builds and CI
->
-> ##### Contributor
-> - Develop features 
-> - De-bugging
-> - Unit testing
-> - Quality assurance
+##### Front-End Dev
+- Develop front-end features
+- De-bugging
+- Unit testing
+- Quality assurance
+
+##### Back-End Dev
+- Develop features 
+- De-bugging
+- Unit testing
+- Quality assurance
+
+##### QA
+- Code review
+- Style/lint enforcement
+- Merge of pull requests
+- Builds and CI
 
 
 #### Events
-> Please describe the meetings you planning to have:
->  * When and where? In-person or online?
->  * What's the purpose of each meeting?
 
 ##### Scrum meetings (in-person): 
 - Every Tuesday after tutorial for 30 minutes
@@ -44,21 +42,13 @@ proof-reader, etc.) on the team, and the responsibilities associated with each r
 - Identify what features need to be completed for the MVP
 - Delegate tasks and responsibilities among the group
     
-##### Review meeting (in person, Nov 14): 
-- TBD
+##### Review meeting (in person, Nov 16): 
+- Heuristics testing
+- Quality assurance, making sure that everything is working as intended
+- Discuss about our progress during the last iteration, and things we can improve on
 
-
-#### Artifacts
-> Please describe the artifacts that you will produce in order to organize and keep track of your team's progress.
-> For example:
->  * To-do lists, burndown chart, schedule, etc.
->  * If you include charts/diagrams, make sure to explain what they represent.
->  * If you're maintaining a to-do list, make sure to mention which tool you're using, how you are prioritizing items and how items get assigned to team members.
 
 ## Product
-> * Describe your goals for this iteration and the tasks that you will have to complete in order to achieve these goals.
-> * When listing goals/tasks, order the items from most to least important.
-> * Feel free (but not obligated) to specify some/all tasks as user stories.
 
 #### Goals and tasks:
 
@@ -66,54 +56,46 @@ proof-reader, etc.) on the team, and the responsibilities associated with each r
     - Clarify why renting furniture is desirable compared to owning furniture.
     - Clarify the IRL workflow of furniture transportation/delivery.
     - Consider options to limit seller/buyer liability for damages to items in transaction.
-* Create a minimum viable product by implementing the following features:
-    - User Registration
-        - Post
-            - Username
-            - First Name
-            - Last Name
-            - E-mail Address
-            - Address
-            - Short Biography
-    - User Profile
-        - Post
-            - Edit profile
-        - Delete 
-            - Profile ID
-    - Rate Transaction
-        - Post (per transaction)
-            - Rater User ID
-            - Ratee User ID
-            - Rating
-    - Listing for furniture
-        - Post
-            - Title
-            - Description
-            - Condition
-            - Tag
-            - Picture
-            - Pricing
-        - Get
-            - Listing ID
-            - return: info
-        - Delete
-            - Listing
-        - Edit
-            - Edit Posting
-    - Search for furniture
-        - Get
-            - Query Params {$Type, $MinPrice, $MaxPrice, $Style {...}, etc }
-            - return: Listing IDs
-        
-    - Bid for furniture
-    - Schedule delivery
-
-* Prepare a demo of the product MVP
-    - Write demo script;
-    - Produce a video version of the demo.
+* Prepare for team demo
+    - Create a minimum viable product by implementing the following features:
+        - User Registration
+        - User Profile
+        - Rate Transaction
+        - List furniture
+        - Search furniture
+        - Bid on furniture
+        - Schedule delivery
+    - Prepare a demo of the product MVP
+        - Write demo script
+        - Produce a video of the demo.
 
 #### Artifacts
-> * Describe the artifacts (diagrams, interactive mock-ups, wireframes, actual code, etc.)
-   that you are planning to produce by the end of (and during) this iteration.
->  * Be precise.
->    For example: "Build the website" is not precise at all, but "Build a static home page and upload it somewhere, so that it is publicly accessible" is much clearer.`
+
+  * A functional prototype of the website:
+    * Data model
+    * Database schema
+    * Backend & frontend code for the features listed above (under goals and tasks)
+  * Demo video:
+    * Video / narrative script
+    * Screencast demo of the prototype showcasing implemented features
+
+* Backend
+    * Live endpoints
+        *  Registration and user profile editing
+        *  Add listing
+        *  View listing
+        *  Listings search
+
+* Frontend
+    * Views
+        *   Landing Page
+        *  Dashboard
+        *  User Profile
+        *  Listing
+        *  Purchase
+
+* Database
+    * Models
+        * Listing
+        * Profile
+        * Location  
