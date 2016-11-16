@@ -50,7 +50,6 @@ def register_user(request):
 @login_required
 @json_view
 def search_furniture(request):
-    response = {}
     if request.method == 'POST':
         form = SearchFurnitureForm(request.POST)
         if form.is_valid():
@@ -64,7 +63,6 @@ def search_furniture(request):
                 query_params['location__city__icontains'] = form.cleaned_data['location']
 
             query_set = Listing.objects.filter(**query_params)
-            query_set2 = serializers.serialize('json', query_set)
 
             return render(request, 'listings.html', {'data': query_set})
 
