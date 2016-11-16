@@ -19,7 +19,10 @@ class LoginRequiredMixin:
 
 
 def home(request):
-    return render(request, 'index.html')
+    args = {}
+    args['search_form'] = SearchFurnitureForm()
+
+    return render(request, 'index.html', args)
 
 
 def dashboard(request):
@@ -51,16 +54,20 @@ def search_furniture(request):
     if request.method == 'POST':
         form = SearchFurnitureForm(request.POST)
         if form.is_valid():
-            min_price = form.cleaned_data['min_price']
-            max_price = form.cleaned_data['max_price']
-            location = form.cleaned_data['location']
+            query_params = {}
+            query_params['title__icontains'] = form.cleaned_data['query']
+            if form.cleaned_data['min_price']:
+                query_params['price__gte'] = form.cleaned_data['min_price']
+            if form.cleaned_data['max_price']:
+                query_params['price__lte'] = form.cleaned_data['max_price']
+            if form.cleaned_data['location']:
+                query_params['location__city__icontains'] = form.cleaned_data['location']
 
-            query_set = Listing.objects.filter(price__gte=min_price, price__lte=max_price,
-                                               location__city__contains=location, location__country__contains=location)
+            query_set = Listing.objects.filter(**query_params)
             query_set2 = serializers.serialize('json', query_set)
-            print (query_set2)
 
             return render(request, 'listings.html', {'data': query_set})
+
     args = {}
     args['form'] = SearchFurnitureForm()
     return render(request, 'search.html', args)

@@ -46,6 +46,12 @@
   width: 180px;
 }
 
+.search .form-inline .form-group label {
+  display: block;
+  text-align: left;
+  color: rgb(46, 62, 70);
+}
+
 .search .form-inline input.form-control[type='date'] {
   width: 150px;
 }
