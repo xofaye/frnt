@@ -39,6 +39,9 @@ We are planning to make the following changes to our process:
 
 ## Product - Review
 
+We have completed 16/17 [issues](https://github.com/csc301-fall-2016/project-team-01/milestone/2?closed=1) for Iteration 2.
+
+
 Goals/tasks that were met/completed:
 * Landing page
     * Layout and description/value proposition 

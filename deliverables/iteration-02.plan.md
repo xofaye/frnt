@@ -52,6 +52,8 @@
 
 #### Goals and tasks:
 
+[Iteration 2 Issues](https://github.com/csc301-fall-2016/project-team-01/milestone/2)
+
 * Refine the product vision based on iteration 1 feedback:
     - Clarify why renting furniture is desirable compared to owning furniture.
     - Clarify the IRL workflow of furniture transportation/delivery.
@@ -71,13 +73,13 @@
 
 #### Artifacts
 
-  * A functional prototype of the website:
+* A functional prototype of the website:
     * Data model
     * Database schema
     * Backend & frontend code for the features listed above (under goals and tasks)
-  * Demo video:
+* Demo video:
     * Video / narrative script
-    * Screencast demo of the prototype showcasing implemented features
+    * Screencast demo of the prototype showcasing implemented features  
 
 * Backend
     * Live endpoints
