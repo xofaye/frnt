@@ -1,0 +1,15 @@
+{% extends "default_layout.html" %}
+
+{% block title %}Search | FrnT{% endblock %}
+
+{% block content %}
+  <form method="post" action=".">
+    {{ form.as_p }}
+    <input type="submit" value="search" />
+    {% csrf_token %}
+  </form>
+{% endblock %}
+
+{% block tail %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/masonry/4.1.1/masonry.pkgd.min.js"></script>
+{% endblock %}

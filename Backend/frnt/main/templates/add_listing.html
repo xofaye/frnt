@@ -1,0 +1,19 @@
+{% extends "default_layout.html" %}
+
+{% block title %}Add Listing | FrnT{% endblock %}
+
+{% block content %}
+  <h1>Add Listing</h1>
+
+  <form method="post" action="/listing/add">
+
+	<label> Listing </label>
+  	{{ form.as_p }}
+
+  	<label> Location </label>
+    {{ loc_form.as_p}}
+
+    <input type="submit" value="Submit" />
+    {% csrf_token %}
+  </form>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "default_layout.html" %}
+
+{% block head %}
+  <!-- Put anything you want between the <head></head> here -->
+{% endblock %}
+
+{% block title %}{{ profile.user.username }} | FrnT{% endblock %}
+
+{% block content %}
+<h1>{{ profile.user.username }}</h1>
+<img src="{{ profile.profile_image }}" style="width:200px; height:200px;">
+<br>
+<br>
+<label> First name:</label> {{ profile.user.first_name }} <br>
+<label>Last name:</label> {{ profile.user.last_name }} <br>
+<label>Location:</label> {{profile.location }} <br>
+<label>Biography:</label> {{ profile.biography }} <br>
+<label>Rating:</label> {{ profile.rating }} from {{ profile.rating_count }} reviews
+{% endblock %}
+
+{% block tail %}
+  <!-- This content will appear just before </body> tag -->
+{% endblock %}

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700|Roboto:300,300i,400,500,700,900" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static "css/base.css" %}">
+    <link rel="stylesheet" href="{% static "css/landing.css" %}">
+
+    <title>FrnT</title>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
+    <div class="jumbotron">
+      <div class="container">
+        <div class="header-row row">
+          <div class="col-md-9">
+            <h1 class="header-name">FrnT</h1>
+            <small class="header-motto">Spend like a peasant,<br> live like royalty.</small>
+          </div>
+          <div class="col-md-3">
+            <a class="signup btn btn-default btn-outline-only" href="/register/" role="button">Sign up</a>
+            <a class="signup btn btn-default btn-outline-only" href="/login/" role="button">Sign in</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="search">
+        <form class="form-inline" method="POST" action="/search/">
+          <div class="form-group">
+            <label for="query">What</label>
+            <input class="form-control" name="query" type="text" placeholder="What"/>
+          </div>
+          <div class="form-group">
+            <label for="query">From</label>
+            <input class="form-control" name="start_date" type="date" required="true" placeholder="Start date"/>
+          </div>
+          <div class="form-group">
+            <label for="query">Until</label>
+            <input class="form-control" name="end_date" type="date" required="true" placeholder="End date"/>
+          </div>
+          <div class="form-group">
+            <label for="location">Where</label>
+            <input class="form-control" name="location" type="text" placeholder="Where"/>
+          </div>
+          <div class="form-group">
+            <label for="submit" class="spacing-hack">&nbsp;</label>
+            <button name="submit" type="submit" class="search-button btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+          </div>
+
+          <input name="min_price" type="hidden" value="0">
+          <input name="max_price" type="hidden" value="999999">
+          {% csrf_token %}
+        </form>
+      </div>
+    </div>
+
+    <div class="container">
+      <!-- Example row of columns -->
+      <div class="row">
+        <div class="col-md-4">
+          <h2>Clutter-free</h2>
+          <p>Lease your unused furniture. We will deal with the rest. <br> <br> We take the furniture that owners want to lease and store it in our warehouse. When the final bid from a buyer has been placed, we ask for confirmation from the furniture owner before proceeding to drop the piece off at their location. </p>
+          <p><a class="btn btn-default" href="#" role="button">Lease Furniture &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+          <h2>Convenient</h2>
+          <p>Moving out shouldn't equate to breaking out a sweat. We will make it 100% hassle-free for you. <br> <br> Bid on a price for the pieces that are leased for a period of time. We will send the piece out upon agreement from both ends of the users. And yes, we send it right to the doorstep -- free of charge! </p>
+          <p><a class="btn btn-default" href="#" role="button">Search Furniture &raquo;</a></p>
+       </div>
+        <div class="col-md-4">
+          <h2>How do we do it?</h2>
+          <p>We have our own warehouse to store the pieces for local leasers.  <br> <br>
+          <i>"But I want my furniture back!"</i> <br> <br>
+          Not a problem! We also return furniture that you previously want leased. No hassle there!</p>
+          <p><a class="btn btn-default" href="#" role="button">Learn More &raquo;</a></p>
+        </div>
+      </div>
+
+      <hr>
+
+      <footer class="landing-footer">
+        <div class="col1">
+          <div class="col1-text">
+            <p>
+            We [team 01] are a team of 5 pragmatic students eager to make the world a nicer place to live in -- one piece of furniture at a time. <br>
+            Come find us on social media!
+            </p>
+          </div>
+        </div>
+
+        <div class="col2">
+          <div class="col2-text">
+            <p>About
+            <br> Help
+            <br> Legal and Privacy Policy
+            <br> Contact Us
+            <br> Feedback
+            <br> &copy; 2016 Company, Inc.
+            </p>
+          </div>
+        </div>
+      </footer>
+
+    </div> <!-- /container -->
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ=" crossorigin="anonymous"></script>
+  </body>
+</html>
