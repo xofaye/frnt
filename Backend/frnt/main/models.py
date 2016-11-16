@@ -40,6 +40,12 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
+    def get_rating_range(self):
+        return list(range(int(self.rating)))
+
+    def get_antirating_range(self):
+        return list(range(5 - int(self.rating)))
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
