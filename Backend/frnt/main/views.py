@@ -47,7 +47,6 @@ def register_user(request):
     args['form'] = SignUpForm()
     return render(request, 'register.html', args)
 
-@login_required
 @json_view
 def search_furniture(request):
     response = {}
@@ -72,7 +71,7 @@ def search_furniture(request):
     args['form'] = SearchFurnitureForm()
     return render(request, 'search.html', args)
 
-@login_required
+
 def edit_profile(request):
     l = None
     loc_form = LocationForm(request.POST or None)
@@ -110,6 +109,7 @@ def view_listing(request, id):
     context = {'user': request.user, 'listing': listing}
     return render(request, 'view_listing.html', context)
 
+
 def add_listing(request):
     loc_form = LocationForm(request.POST or None)
     form = AddListingForm(request.POST or None)
@@ -139,6 +139,7 @@ def add_listing(request):
         'loc_form': loc_form,
     }
     return render(request, 'add_listing.html', context)
+
 
 def edit_listing(request):
     if request.method == 'POST':
