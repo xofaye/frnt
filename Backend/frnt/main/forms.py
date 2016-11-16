@@ -27,6 +27,7 @@ class SignUpForm(UserCreationForm):
 
 
 class SearchFurnitureForm(forms.Form):
+    query = forms.CharField(initial="", required=True)
     min_price = forms.IntegerField(initial=0, required=False)
     max_price = forms.IntegerField(initial=9999999999, required=False)
     location = forms.CharField(max_length=100, required=False)
