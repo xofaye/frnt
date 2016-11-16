@@ -63,3 +63,31 @@
   opacity: 0.6;
 }
 
+
+.landing-footer {
+  overflow: hidden;
+}
+
+.landing-footer .col1 {
+  text-align: left;
+  float: left;
+  overflow-wrap: normal;
+  width: 74%
+}
+
+.landing-footer .col2 {
+  text-align: right;
+  float: right;
+  width: 25%
+}
+
+.landing-footer .col1-text {
+  display: inline-block;
+  float: left;
+}
+
+.landing-footer .col2-text {
+  display: inline-block;
+  text-align: left;
+  float: right;
+}
