@@ -37,6 +37,9 @@ class Profile(models.Model):
     rating = models.DecimalField(default=0, max_digits=3, decimal_places=2)
     rating_count = models.IntegerField(default=0)
 
+    def __str__(self):
+        return self.user.username
+
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
@@ -46,14 +49,23 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
+class ListingPicture(models.Model):
+    title = models.CharField(max_length=255)
+    url = models.URLField()
+
+    def __str__(self):
+        return self.title
 
 class Listing(models.Model):
     user = models.ForeignKey('Profile')
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=500, blank=True)
-    picture = models.ImageField(upload_to=get_image_path, blank=True)
+    pictures = models.ManyToManyField(ListingPicture)
     price = models.DecimalField(default=0, max_digits=10, decimal_places=2)
     location = models.OneToOneField('Location')
+
+    def __str__(self):
+        return "{} by {} in {}".format(self.title, self.user.user.username, self.location.city)
 
     def get_url(self):
         return "/listing/" + str(self.id)

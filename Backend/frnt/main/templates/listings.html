@@ -5,6 +5,7 @@
 {% block content %}
   <table>
     <tr>
+      <th></th>
       <th>Title</th>
       <th>Price</th>
       <th>Location</th>
@@ -12,9 +13,12 @@
   {% for listing in data %}
     <tr>
       {% url 'listing/{{listing.id}}' as the_url %}
-      <th><a href="{{ listing.get_url }}">{{ listing.title }}</a></th>
-      <th>{{ listing.price }}</th>
-      <th>{{ listing.location }}</th>
+      <td>
+        <img src="{{ listing.pictures.all.0.url }}" alt="{{ listing.pictures.all.0.title }}" class="img-rounded" style="max-width: 140px;">
+      </td>
+      <td><a href="{{ listing.get_url }}">{{ listing.title }}</a></td>
+      <td>{{ listing.price }}</td>
+      <td>{{ listing.location }}</td>
     </tr>
   {% endfor %}
   </table>
