@@ -1,21 +1,98 @@
 {% extends "default_layout.html" %}
 
 {% block head %}
-  <!-- Put anything you want between the <head></head> here -->
+<style>
+  .listing-image {
+    width: 100%;
+    height: 75vh;
+    margin-bottom: 15px;
+    background-position: center center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .glyphicon-star {
+    color: gold;
+  }
+
+  .glyphicon-star-empty {
+    color: lightgray;
+  }
+
+  .sidebar h4:not(:first-child) {
+    margin-top: 25px;
+  }
+
+  .sidebar .btn-lg {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  .table>tbody>tr:first-child>td {
+    border-top-width: 0px;
+  }
+
+  .table>tbody>tr:last-child>td {
+    border-top-width: 2px;
+  }
+</style>
 {% endblock %}
 
 {% block title %}{{ listing.title }} | FrnT{% endblock %}
 
 {% block content %}
-<h1>{{ listing.title }}</h1>
-{{ listing.picture }}
-        Posted by <a href="/{{listing.user.user.username}}">{{ listing.user.user.username }}</a> <br>
-Price: {{ listing.price }} <br>
-Location: {{ listing.location }} <br>
-Description: {{ listing.description }} <br>
+<div class="row">
+  <div class="col-md-12 listing-image" style="background-image: url({{ listing.pictures.all.0.url }})"></div>
 
-<input type="button" value="Contact" />
-<input type="button" value="Payment" />
+  <div class="col-md-8">
+    <h1 clss="col-md-12">{{ listing.title }}</h1>
+    <p class="lead text-muted">Price: ${{listing.price}} per week &bull; Location: {{listing.location.city}}</p>
+    <h4>About this listing</h4>
+    <p>
+      {{ listing.description }}
+    </p>
+  </div>
+
+  <div class="sidebar col-md-4">
+    <h4>About the lister</h4>
+    <div class="row">
+      <div class="col-md-4">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/1/1a/Alien_head.jpg" class="img-thumbnail" style="width: 140px" />
+      </div>
+      <div class="col-md-8">
+        <a href="/{{listing.user.user.username}}">{{ listing.user.user.first_name }} {{listing.user.user.last_name}}</a>
+        {% for i in listing.user.get_rating_range %}
+          <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+        {% endfor %}
+        {% for i in listing.user.get_antirating_range %}
+          <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+        {% endfor %}
+        <p style="margin-top:5px;">{{ listing.user.biography }}</p>
+      </div>
+    </div>
+
+    <h4>Pricing details</h4>
+    <table class="table">
+      <tr>
+        <td>Rental rate</td>
+        <td>${{listing.price}}</td>
+      </tr>
+      <tr>
+        <td>Moving fee</td>
+        <td>$15</td>
+      </tr>
+      <tr>
+        <td>Insurance</td>
+        <td>$3.50</td>
+      </tr>
+      <tr>
+        <td><strong>Total</strong></td>
+        <td>${{listing.get_total|floatformat:2}}</td>
+      </tr>
+    </table>
+    <a class="btn btn-success btn-lg btn-block center-block" href="#">Book Now</a>
+  </div>
+</div>
 {% endblock %}
 
 {% block tail %}
