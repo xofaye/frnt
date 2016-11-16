@@ -2,7 +2,7 @@ from django.contrib import admin
 
 # Register your models here.
 
-from .models import Profile, Location, Listing
+from .models import Profile, Location, Listing, ListingPicture
 
 @admin.register(Location)
 class LocationAdmin(admin.ModelAdmin):
@@ -14,4 +14,8 @@ class ProfileAdmin(admin.ModelAdmin):
 
 @admin.register(Listing)
 class ListingAdmin(admin.ModelAdmin):
+    pass
+
+@admin.register(ListingPicture)
+class ListingPictureAdmin(admin.ModelAdmin):
     pass
