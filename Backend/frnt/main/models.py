@@ -75,3 +75,7 @@ class Listing(models.Model):
 
     def get_url(self):
         return "/listing/" + str(self.id)
+
+    def get_total(self):
+        return float(self.price) + 15.0 + 3.50
+
