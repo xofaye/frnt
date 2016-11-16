@@ -6,7 +6,13 @@
   <h1>Add Listing</h1>
 
   <form method="post" action="/listing/add">
-    {{ form.as_p }}
+
+	<label> Listing </label>
+  	{{ form.as_p }}
+
+  	<label> Location </label>
+    {{ loc_form.as_p}}
+
     <input type="submit" value="Submit" />
     {% csrf_token %}
   </form>

@@ -62,16 +62,6 @@ class AddListingForm(forms.ModelForm):
         model = Listing
         fields = ('title', 'description', 'picture', 'price')
 
-    def save(self, commit=True):
-        listing = super(AddListingForm, self).save(commit=False)
-        listing.title = self.cleaned_data['title']
-        listing.description = self.cleaned_data['description']
-        listing.picture = self.cleaned_data['picture']
-        listing.price = self.cleaned_data['price']
-        if commit:
-            listing.save()
-        return listing
-
 class EditListingForm(forms.ModelForm):
     title = forms.CharField(max_length=100)
     description = forms.CharField(max_length=500, required=False)
