@@ -4,7 +4,7 @@
 ## Iteration 02
 
  * Start date: November 7, 2016
- * End date: November 14, 2016
+ * End date: November 15, 2016
 
 ## Process
 
