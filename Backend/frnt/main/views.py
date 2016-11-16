@@ -8,7 +8,7 @@ from jsonview.decorators import json_view
 from django.core import serializers
 
 from .services import furniture_search
-from .forms import SignUpForm, SearchFurnitureForm, EditProfileForm, LocationForm
+from .forms import SignUpForm, SearchFurnitureForm, EditProfileForm, LocationForm, AddListingForm, EditListingForm
 from .models import Listing, Location, Profile
 
 
@@ -109,3 +109,44 @@ def view_listing(request, id):
 
     context = {'user': request.user, 'listing': listing}
     return render(request, 'view_listing.html', context)
+
+def add_listing(request):
+    loc_form = LocationForm(request.POST or None)
+    form = AddListingForm(request.POST or None)
+
+    if request.method == 'POST':
+        if loc_form.is_valid():
+            street_address = loc_form.cleaned_data['street_address']
+            city = loc_form.cleaned_data['city']
+            postal_code = loc_form.cleaned_data['postal_code']
+            country = loc_form.cleaned_data['country']
+
+            l = None
+            if street_address or city or postal_code or country:
+                l = Location.objects.create(street_address=street_address, city=city,
+                                        postal_code=postal_code, country=country)
+            if form.is_valid():
+                title = form.cleaned_data['title']
+                description = form.cleaned_data['description']
+                picture = form.cleaned_data['picture']
+                price = form.cleaned_data['price']
+                listing = Listing.objects.create(title=title, description=description, 
+                    picture=picture, price=price, location=l, user=request.user.profile)
+            return redirect('dashboard')
+
+    context = {
+        'form': form,
+        'loc_form': loc_form,
+    }
+    return render(request, 'add_listing.html', context)
+
+def edit_listing(request):
+    if request.method == 'POST':
+        form = EditListingForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('home')
+    context = {
+        'form': EditListingForm()
+    }
+    return render(request, 'edit_listing.html', context)
