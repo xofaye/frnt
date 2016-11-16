@@ -35,6 +35,10 @@
   .table>tbody>tr:last-child>td {
     border-top-width: 2px;
   }
+
+  .modal .table {
+    margin-bottom: 0;
+  }
 </style>
 {% endblock %}
 
@@ -78,7 +82,7 @@
         <td>${{listing.price}}</td>
       </tr>
       <tr>
-        <td>Moving fee</td>
+        <td>Moving with El Cheapo</td>
         <td>$15</td>
       </tr>
       <tr>
@@ -90,9 +94,55 @@
         <td>${{listing.get_total|floatformat:2}}</td>
       </tr>
     </table>
-    <a class="btn btn-success btn-lg btn-block center-block" href="#">Book Now</a>
+    <a class="btn btn-success btn-lg btn-block center-block" href="#" data-toggle="modal" data-target="#myModal">Request Now</a>
+    <a class="btn btn-sm btn-block center-block" href="#" data-toggle="modal" data-target="#myModal">Contact Lister</a>
   </div>
 </div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title">Request "{{listing.title}}"</h4>
+      </div>
+      <div class="modal-body">
+        <div class="row">
+          <div class="col-md-6" style="height: 200px;">
+            <h4>Pricing details</h4>
+            <table class="table">
+              <tr>
+                <td>Rental rate</td>
+                <td>${{listing.price}}</td>
+              </tr>
+              <tr>
+                <td>Moving with El Cheapo</td>
+                <td>$15</td>
+              </tr>
+              <tr>
+                <td>Insurance</td>
+                <td>$3.50</td>
+              </tr>
+              <tr>
+                <td><strong>Total</strong></td>
+                <td>${{listing.get_total|floatformat:2}}</td>
+              </tr>
+            </table>
+            <small style="font-size:1rem;">You will not be charged until your booking is approved.</small>
+          </div>
+          <div class="col-md-6">
+            <label for="booking_message">Message for the lister</label>
+            <textarea name="booking_message" class="form-control" style="height: 200px; width: 100%;" rows="3"></textarea>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Book!</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
 {% endblock %}
 
 {% block tail %}
