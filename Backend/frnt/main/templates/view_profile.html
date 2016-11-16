@@ -8,12 +8,14 @@
 
 {% block content %}
 <h1>{{ profile.user.username }}</h1>
-{{ profile.profile_image }}
-First name: {{ profile.user.first_name }} <br>
-Last name: {{ profile.user.last_name }} <br>
-Location: {{profile.location }} <br>
-Biography: {{ profile.biography }} <br>
-Rating: {{ profile.rating }} from {{ profile.rating_count }} reviews
+<img src="{{ profile.profile_image }}" style="width:200px; height:200px;">
+<br>
+<br>
+<label> First name:</label> {{ profile.user.first_name }} <br>
+<label>Last name:</label> {{ profile.user.last_name }} <br>
+<label>Location:</label> {{profile.location }} <br>
+<label>Biography:</label> {{ profile.biography }} <br>
+<label>Rating:</label> {{ profile.rating }} from {{ profile.rating_count }} reviews
 {% endblock %}
 
 {% block tail %}

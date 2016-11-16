@@ -32,7 +32,7 @@ class Profile(models.Model):
     '''
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
     location = models.ForeignKey('Location', blank=True, null=True)
-    profile_image = models.ImageField(upload_to=get_image_path, blank=True)
+    profile_image = models.URLField()
     biography = models.CharField(max_length=500, blank=True)
     rating = models.DecimalField(default=0, max_digits=3, decimal_places=2)
     rating_count = models.IntegerField(default=0)
