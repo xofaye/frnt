@@ -2,28 +2,14 @@
 
 {% block title %}Sign Up | FrnT{% endblock %}
 
+
 {% block content %}
-<link rel="stylesheet" href="{% static "css/form.css" %}">
+  <link rel="stylesheet" href="{% static "css/form.css" %}">
 
-<h1 style="padding-left: 5%; padding-top: 5%">Sign Up Now!</h1>
-<div style="overflow-wrap: normal; padding-left: 5%; padding-right: 5%">
-	<text >Register for a free account with us and join our community today! You'll be getting the latest updates on FrnT. We promise we won't spam you!</text>
-</div>
-<br>
-<hr style="width: 100%; height: 10px; border: 0; box-shadow: 0 10px 10px -10px #8c8b8b inset;">
-
-<div style="display: inline-block;">
-    <div class="span12" style="padding-right: 15px; padding-left: 15px; padding-bottom: 15px; padding-top: 15px; margin: 20px; overflow-wrap: normal;">
-        
-		<form method="post" action=".">
-		    {{ form.as_p }}
-		    <text> <br> By clicking Register, you agree to our Terms and Agreements (see Legal page for more information). <br> </text>
-		    <input type="submit" value="Register" style="margin: 10px; font-size: 15px; font-weight: bold;" />
-		    {% csrf_token %}
-		</form>
-	         
-    </div>
-</div>
-
-<hr style="width: 100%; height: 10px; border: 0; box-shadow: 0 10px 10px -10px #8c8b8b inset;">
+  <h1>Register here!</h1>
+  <form method="post" action=".">
+    {{ form.as_p }}
+    <input type="submit" value="register" />
+    {% csrf_token %}
+  </form>
 {% endblock %}
