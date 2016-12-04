@@ -115,3 +115,9 @@ LOGIN_REDIRECT_URL = '/dashboard'
 LOGOUT_REDIRECT_URL = '/logout_success'
 
 SITE_ID = 1
+
+EMAIL_HOST = 'smtp.sendgrid.net'
+EMAIL_HOST_USER = 'xofaye'
+EMAIL_HOST_PASSWORD = 'FrnT3012016'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True

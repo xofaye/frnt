@@ -19,7 +19,9 @@ urlpatterns = [
     url(r'^listing/(?P<id>[\d]+)/', include([
         url(r'^$', views.view_listing, name='view_listing'),
     ])),
+    url(r'^book/$', views.book, name='book'),
+
     url(r'^(?P<username>[\w]+)/', include([
         url(r'^$', views.view_profile, name='view_profile'),
-    ])),
+    ]))
 ]

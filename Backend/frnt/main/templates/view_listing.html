@@ -130,16 +130,26 @@
             </table>
             <small style="font-size:1rem;">You will not be charged until your booking is approved.</small>
           </div>
+         <form method="POST" action="/book/" role ="book">
+
           <div class="col-md-6">
+
+            <label for="from_email">Email</label>
+            <input name="to_email" type="hidden" value="{{ listing.user.user.email }}">
+
+            <input type="text" name="from_email" class="form-control" style="width: 100%;" rows="1"/>
             <label for="booking_message">Message for the lister</label>
+              {% csrf_token %}
             <textarea name="booking_message" class="form-control" style="height: 200px; width: 100%;" rows="3"></textarea>
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+             <button type="submit" class="btn btn-primary">Book!</button>
+
           </div>
+</form>
         </div>
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Book!</button>
-      </div>
+
     </div><!-- /.modal-content -->
   </div><!-- /.modal-dialog -->
 </div><!-- /.modal -->
