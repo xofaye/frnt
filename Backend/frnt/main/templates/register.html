@@ -2,12 +2,14 @@
 
 {% block title %}Sign Up | FrnT{% endblock %}
 
-{% block content %}
-  <h1>Register here!</h1>
 
+{% block content %}
+  <link rel="stylesheet" href="{% static "css/form.css" %}">
+
+  <h1>Register here!</h1>
   <form method="post" action=".">
     {{ form.as_p }}
-    <input type="submit" value="register" />
+    <input type="submit" value="Register" />
     {% csrf_token %}
   </form>
 {% endblock %}
