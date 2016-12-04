@@ -125,10 +125,10 @@ def add_listing(request):
             if form.is_valid():
                 title = form.cleaned_data['title']
                 description = form.cleaned_data['description']
-                picture = form.cleaned_data['picture']
+                pictures = form.cleaned_data['pictures']
                 price = form.cleaned_data['price']
                 listing = Listing.objects.create(title=title, description=description, 
-                    picture=picture, price=price, location=l, user=request.user.profile)
+                    pictures=pictures, price=price, location=l, user=request.user.profile)
             return redirect('dashboard')
 
     context = {
