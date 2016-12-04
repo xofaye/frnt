@@ -30,7 +30,7 @@ def home(request):
 @login_required
 def dashboard(request):
     my_listings = Listing.objects.filter(user=request.user.profile)
-    listings = Listing.objects.all()[:5]
+    listings = Listing.objects.all()[:6]
     context = {'listings': listings, 'my_listings': my_listings}
     return render(request, 'dashboard.html', context)
 
@@ -159,13 +159,14 @@ def edit_listing(request):
 
 def book(request):
     subject = 'New Furniture Booking'
+    title = request.POST.get('title', '')
     name = request.POST.get('first_name', '')
     message = request.POST.get('booking_message', '')
     project_email = 'csc301project@freeatnet.com'
     from_email = request.POST.get('from_email', '')
     to_email = request.POST.get('to_email', '')
     email_text = "Hi " + name + "! <br><br>" + "You got a booking request from: " + \
-                 from_email + "<br><br> Message: <br>" + message
+                 from_email + " for your listing: '" + title + "'<br><br> Message: <br>" + message
     if subject and message and from_email:
         try:
             #send_mail(subject, message, project_email, [to_email])

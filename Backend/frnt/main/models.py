@@ -55,12 +55,14 @@ def create_user_profile(sender, instance, created, **kwargs):
 def save_user_profile(sender, instance, **kwargs):
     instance.profile.save()
 
+
 class ListingPicture(models.Model):
     title = models.CharField(max_length=255)
     url = models.URLField()
 
     def __str__(self):
         return self.title
+
 
 class Listing(models.Model):
     user = models.ForeignKey('Profile')

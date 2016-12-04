@@ -134,7 +134,7 @@
 
           <div class="col-md-6">
             <input name="first_name" type="hidden" value="{{ listing.user.user.first_name }}">
-
+            <input name="title" type="hidden" value="{{ listing.title }}">
             <input name="to_email" type="hidden" value="{{ listing.user.user.email }}">
             <input name="from_email" type="hidden" value="{{ request.user.email }}">
             <label for="booking_message">Message for the lister</label>
