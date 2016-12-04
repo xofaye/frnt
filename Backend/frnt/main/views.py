@@ -160,11 +160,13 @@ def edit_listing(request):
 def book(request):
     subject = 'New Furniture Booking'
     message = request.POST.get('booking_message', '')
+    project_email = 'csc301project@freeatnet.com'
     from_email = request.POST.get('from_email', '')
+    message += '\nRequest from: ' + from_email
     to_email = request.POST.get('to_email', '')
     if subject and message and from_email:
         try:
-            send_mail(subject, message, from_email, [to_email])
+            send_mail(subject, message, project_email, [to_email])
         except BadHeaderError:
             return HttpResponse('Invalid header found.')
         return HttpResponseRedirect('/dashboard/')
