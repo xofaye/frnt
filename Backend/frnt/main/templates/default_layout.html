@@ -53,7 +53,9 @@
           </form><!-- /.navbar-form -->
           <ul class="nav navbar-nav navbar-right">
              {% if request.user.is_authenticated %}
+              <li><a href="/search">Search</a></li>
               <li><a href="/listing/add">Create New Listing</a></li>
+              <li><a href="/profile/edit">Edit Profile</a></li>
               <li><a href="/logout/">Sign Out</a></li>
              {% else %}
               <li><a href="/login/">Sign In</a></li>
