@@ -1,11 +1,14 @@
 import logging
 
+
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
+from django.core.mail import send_mail, BadHeaderError
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.decorators import method_decorator
 from jsonview.decorators import json_view
 from django.core import serializers
+from django.http import HttpResponse, HttpResponseRedirect
 
 from .services import furniture_search
 from .forms import SignUpForm, SearchFurnitureForm, EditProfileForm, LocationForm, AddListingForm, EditListingForm
@@ -152,3 +155,22 @@ def edit_listing(request):
         'form': EditListingForm()
     }
     return render(request, 'edit_listing.html', context)
+
+
+def book(request):
+    subject = 'New Furniture Booking'
+    message = request.POST.get('booking_message', '')
+    project_email = 'csc301project@freeatnet.com'
+    from_email = request.POST.get('from_email', '')
+    message += '\nRequest from: ' + from_email
+    to_email = request.POST.get('to_email', '')
+    if subject and message and from_email:
+        try:
+            send_mail(subject, message, project_email, [to_email])
+        except BadHeaderError:
+            return HttpResponse('Invalid header found.')
+        return HttpResponseRedirect('/dashboard/')
+    else:
+        # In reality we'd use a form class
+        # to get proper validation errors.
+        return HttpResponse('Make sure all fields are entered and valid.')
