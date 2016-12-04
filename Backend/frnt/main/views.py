@@ -3,7 +3,7 @@ import logging
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-from django.core.mail import send_mail, BadHeaderError
+from django.core.mail import send_mail, BadHeaderError, EmailMessage
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.decorators import method_decorator
 from jsonview.decorators import json_view
@@ -159,14 +159,19 @@ def edit_listing(request):
 
 def book(request):
     subject = 'New Furniture Booking'
+    name = request.POST.get('first_name', '')
     message = request.POST.get('booking_message', '')
     project_email = 'csc301project@freeatnet.com'
     from_email = request.POST.get('from_email', '')
-    message += '\nRequest from: ' + from_email
     to_email = request.POST.get('to_email', '')
+    email_text = "Hi " + name + "! <br><br>" + "You got a booking request from: " + \
+                 from_email + "<br><br> Message: <br>" + message
     if subject and message and from_email:
         try:
-            send_mail(subject, message, project_email, [to_email])
+            #send_mail(subject, message, project_email, [to_email])
+            msg = EmailMessage(subject, email_text, project_email, [to_email])
+            msg.content_subtype = "html"
+            msg.send()
         except BadHeaderError:
             return HttpResponse('Invalid header found.')
         return HttpResponseRedirect('/dashboard/')

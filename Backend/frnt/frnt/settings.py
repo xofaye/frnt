@@ -116,8 +116,11 @@ LOGOUT_REDIRECT_URL = '/logout_success'
 
 SITE_ID = 1
 
-EMAIL_HOST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER = 'xofaye'
-EMAIL_HOST_PASSWORD = 'FrnT3012016'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
+# EMAIL_HOST = 'smtp.sendgrid.net'
+# EMAIL_HOST_USER = 'xofaye'
+# EMAIL_HOST_PASSWORD = 'FrnT3012016'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+
+EMAIL_BACKEND = "sgbackend.SendGridBackend"
+SENDGRID_API_KEY = "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"
