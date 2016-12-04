@@ -31,7 +31,7 @@ def home(request):
 @login_required
 def dashboard(request):
     my_listings = Listing.objects.filter(user=request.user.profile)
-    listings = Listing.objects.all()[:6]
+    listings = Listing.objects.all().order_by('-id')[:6]
     context = {'listings': listings, 'my_listings': my_listings}
     return render(request, 'dashboard.html', context)
 
