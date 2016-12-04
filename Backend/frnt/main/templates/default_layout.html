@@ -42,13 +42,13 @@
           <ul class="nav navbar-nav">
             <!-- Left-aligned menu items -->
           </ul>
-          <form class="navbar-form navbar-left" method="POST" action="/search/">
+          <form class="navbar-form navbar-left" method="POST" action="/search/" role ="search">
           <div class="form-group">
-            <input class="form-control" name="query" type="text" style="width:300px;" placeholder="Search furniture now"/>
-            <button name="submit" type="submit" class="search-button btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
+            <input class="form-control" name="query" type="text" size="32" placeholder="Search furniture now"/>
           </div>
           <input name="min_price" type="hidden" value="0">
           <input name="max_price" type="hidden" value="999999">
+           <button name="submit" type="submit" class="search-button btn btn-default"><span class="glyphicon glyphicon-search"></span></button>
           {% csrf_token %}
           </form><!-- /.navbar-form -->
           <ul class="nav navbar-nav navbar-right">
