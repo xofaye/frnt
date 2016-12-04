@@ -11,6 +11,7 @@ from .services import furniture_search
 from .forms import SignUpForm, SearchFurnitureForm, EditProfileForm, LocationForm, AddListingForm, EditListingForm
 from .models import Listing, Location, Profile
 
+
 class LoginRequiredMixin:
     @method_decorator(login_required)
     def dispatch(self, *args, **kwargs):
@@ -23,10 +24,11 @@ def home(request):
 
     return render(request, 'index.html', args)
 
-
+@login_required
 def dashboard(request):
+    my_listings = Listing.objects.filter(user=request.user.profile)
     listings = Listing.objects.all()[:5]
-    context = {'listings': listings}
+    context = {'listings': listings, 'my_listings': my_listings}
     return render(request, 'dashboard.html', context)
 
 
@@ -62,7 +64,7 @@ def search_furniture(request):
 
             query_set = Listing.objects.filter(**query_params)
 
-            return render(request, 'listings.html', { 'form': form, 'data': query_set })
+            return render(request, 'listings.html', {'form': form, 'data': query_set})
 
     args = {}
     args['form'] = SearchFurnitureForm()
@@ -119,17 +121,19 @@ def add_listing(request):
             country = loc_form.cleaned_data['country']
 
             l = None
+            listing = None
             if street_address or city or postal_code or country:
                 l = Location.objects.create(street_address=street_address, city=city,
                                         postal_code=postal_code, country=country)
             if form.is_valid():
                 title = form.cleaned_data['title']
                 description = form.cleaned_data['description']
-                picture = form.cleaned_data['picture']
+                pictures = form.cleaned_data['pictures']
                 price = form.cleaned_data['price']
                 listing = Listing.objects.create(title=title, description=description, 
-                    picture=picture, price=price, location=l, user=request.user.profile)
-            return redirect('dashboard')
+                    pictures=pictures, price=price, location=l, user=request.user.profile)
+            context = {'user': request.user, 'listing': listing}
+            return render(request, 'view_listing.html', context)
 
     context = {
         'form': form,
