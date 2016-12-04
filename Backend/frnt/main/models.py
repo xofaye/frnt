@@ -68,7 +68,7 @@ class Listing(models.Model):
     user = models.ForeignKey('Profile')
     title = models.CharField(max_length=100)
     description = models.CharField(max_length=500, blank=True)
-    pictures = models.ManyToManyField(ListingPicture)
+    pictures = models.ManyToManyField('ListingPicture', blank=True)
     price = models.DecimalField(default=0, max_digits=10, decimal_places=2)
     location = models.OneToOneField('Location')
 

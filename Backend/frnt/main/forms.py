@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import UserCreationForm
 
-from .models import Listing, Profile, Location
+from .models import Listing, Profile, Location, ListingPicture
 from .models import get_image_path
 
 
@@ -52,15 +52,24 @@ class LocationForm(forms.ModelForm):
         model = Location
         fields = ('street_address', 'city', 'postal_code', 'country')
 
+
+class ListingPictureForm(forms.ModelForm):
+    url = forms.CharField(max_length=500, required=True)
+
+    class Meta:
+        model = ListingPicture
+        fields = ('url',)
+
+
 class AddListingForm(forms.ModelForm):
     title = forms.CharField(max_length=100)
     description = forms.CharField(max_length=500, required=False)
-    pictures = forms.ImageField(required=False)
     price = forms.DecimalField(max_digits=10, decimal_places=2)
 
     class Meta:
         model = Listing
-        fields = ('title', 'description', 'pictures', 'price')
+        fields = ('title', 'description', 'price')
+
 
 class EditListingForm(forms.ModelForm):
     title = forms.CharField(max_length=100)

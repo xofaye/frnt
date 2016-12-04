@@ -3,7 +3,7 @@ import logging
 
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import logout
-from django.core.mail import send_mail, BadHeaderError, EmailMessage
+from django.core.mail import BadHeaderError, EmailMessage
 from django.shortcuts import render, redirect, get_object_or_404
 from django.utils.decorators import method_decorator
 from jsonview.decorators import json_view
@@ -11,8 +11,9 @@ from django.core import serializers
 from django.http import HttpResponse, HttpResponseRedirect
 
 from .services import furniture_search
-from .forms import SignUpForm, SearchFurnitureForm, EditProfileForm, LocationForm, AddListingForm, EditListingForm
-from .models import Listing, Location, Profile
+from .forms import SignUpForm, SearchFurnitureForm, EditProfileForm, LocationForm, \
+    AddListingForm, EditListingForm, ListingPictureForm
+from .models import Listing, Location, Profile, ListingPicture
 
 
 class LoginRequiredMixin:
@@ -115,6 +116,7 @@ def view_listing(request, id):
 def add_listing(request):
     loc_form = LocationForm(request.POST or None)
     form = AddListingForm(request.POST or None)
+    pic_form = ListingPictureForm(request.POST or None)
 
     if request.method == 'POST':
         if loc_form.is_valid():
@@ -127,20 +129,25 @@ def add_listing(request):
             listing = None
             if street_address or city or postal_code or country:
                 l = Location.objects.create(street_address=street_address, city=city,
-                                        postal_code=postal_code, country=country)
+                                            postal_code=postal_code, country=country)
+
             if form.is_valid():
                 title = form.cleaned_data['title']
                 description = form.cleaned_data['description']
-                pictures = form.cleaned_data['pictures']
                 price = form.cleaned_data['price']
-                listing = Listing.objects.create(title=title, description=description, 
-                    pictures=pictures, price=price, location=l, user=request.user.profile)
+                listing = Listing.objects.create(title=title, description=description,
+                                                 price=price, location=l, user=request.user.profile)
+            title, url = None, None
+            if pic_form.is_valid():
+                url = pic_form.cleaned_data['url']
+            listing.pictures.add(ListingPicture.objects.create(title='Title', url=url))
             context = {'user': request.user, 'listing': listing}
             return render(request, 'view_listing.html', context)
 
     context = {
         'form': form,
         'loc_form': loc_form,
+        'pic_form': pic_form
     }
     return render(request, 'add_listing.html', context)
 
@@ -169,7 +176,6 @@ def book(request):
                  from_email + " for your listing: '" + title + "'<br><br> Message: <br>" + message
     if subject and message and from_email:
         try:
-            #send_mail(subject, message, project_email, [to_email])
             msg = EmailMessage(subject, email_text, project_email, [to_email])
             msg.content_subtype = "html"
             msg.send()
@@ -177,6 +183,4 @@ def book(request):
             return HttpResponse('Invalid header found.')
         return HttpResponseRedirect('/dashboard/')
     else:
-        # In reality we'd use a form class
-        # to get proper validation errors.
         return HttpResponse('Make sure all fields are entered and valid.')
