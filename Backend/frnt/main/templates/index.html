@@ -32,8 +32,12 @@
             <small class="header-motto">Spend like a peasant,<br> live like royalty.</small>
           </div>
           <div class="col-md-3">
+            {% if request.user.is_authenticated %}
+            <a class="signup btn btn-default btn-outline-only" href="/dashboard/" role="button">Dashboard</a>
+            {% else %}
             <a class="signup btn btn-default btn-outline-only" href="/register/" role="button">Sign up</a>
             <a class="signup btn btn-default btn-outline-only" href="/login/" role="button">Sign in</a>
+            {% endif %}
           </div>
         </div>
       </div>

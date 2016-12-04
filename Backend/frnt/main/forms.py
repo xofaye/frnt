@@ -55,12 +55,12 @@ class LocationForm(forms.ModelForm):
 class AddListingForm(forms.ModelForm):
     title = forms.CharField(max_length=100)
     description = forms.CharField(max_length=500, required=False)
-    picture = forms.ImageField(required=False)
+    pictures = forms.ImageField(required=False)
     price = forms.DecimalField(max_digits=10, decimal_places=2)
 
     class Meta:
         model = Listing
-        fields = ('title', 'description', 'picture', 'price')
+        fields = ('title', 'description', 'pictures', 'price')
 
 class EditListingForm(forms.ModelForm):
     title = forms.CharField(max_length=100)
