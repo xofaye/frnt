@@ -28,12 +28,18 @@ def home(request):
 
     return render(request, 'index.html', args)
 
-@login_required
+
 def dashboard(request):
     my_listings = Listing.objects.filter(user=request.user.profile)
     listings = Listing.objects.all().order_by('-id')[:6]
     context = {'listings': listings, 'my_listings': my_listings}
     return render(request, 'dashboard.html', context)
+
+
+def all_listings(request):
+    listings = Listing.objects.all().order_by('-id')
+    context = {'listings': listings}
+    return render(request, 'all_listings.html', context)
 
 
 def logout_success(request):
@@ -101,8 +107,8 @@ def edit_profile(request):
 
 def view_profile(request, username):
     profile = get_object_or_404(Profile, user__username__iexact=username)
-
-    context = {'user': request.user, 'profile': profile}
+    listings = Listing.objects.filter(user=profile)
+    context = {'user': request.user, 'profile': profile, 'listings': listings}
     return render(request, 'view_profile.html', context)
 
 

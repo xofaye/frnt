@@ -1,7 +1,39 @@
 {% extends "default_layout.html" %}
 
 {% block head %}
-  <!-- Put anything you want between the <head></head> here -->
+<style>
+.listing-item {
+  height: 375px;
+  padding: 15px;
+}
+
+.listing-image {
+  width: 100%;
+  height: 280px;
+  background-position: center center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  border-radius: 3px;
+  background-clip: content-box;
+}
+
+.listing-header {
+  padding-top: 10px;
+}
+
+.glyphicon-star {
+  color: gold;
+}
+
+
+.listing-item{
+  margin-bottom: 20px;
+}
+
+.glyphicon-star-empty {
+  color: lightgray;
+}
+</style>
 {% endblock %}
 
 {% block title %}{{ profile.user.username }} | FrnT{% endblock %}
@@ -16,6 +48,51 @@
 <label>Location:</label> {{profile.location }} <br>
 <label>Biography:</label> {{ profile.biography }} <br>
 <label>Rating:</label> {{ profile.rating }} from {{ profile.rating_count }} reviews
+
+<div class="row">
+    <h2 class="col-md-12">{{ profile.user.first_name }}'s Listings</h2>
+ </div>
+
+  <div class="grid row">
+    {% if listings %}
+    {% for listing in listings %}
+    {% url 'listing/{{listing.id}}' as the_url %}
+    <div class="listing-item col-md-4">
+      <div class="row">
+        <div class="col-md-12">
+          <a href="{{ listing.get_url }}">
+            <div class="listing-image" style="background-image: url({{ listing.pictures.all.0.url }})"></div>
+          </a>
+        </div>
+      </div>
+      <div class="row listing-header">
+        <div class="col-md-7">
+          <a href="{{ listing.get_url }}" style="display: block; font-size: 2.5rem; font-weight: 400;">{{ listing.title }}</a>
+        </div>
+        <div class="row-md-5" style="text-align: right; padding-right: 15px;">
+          <span style="font-size: 2.5rem;">${{ listing.price }}<sub>/wk</sub></span>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          Posted by <a href="/{{listing.user.user.username}}">{{ listing.user.user.first_name }} {{listing.user.user.last_name}}</a>
+          {% for i in listing.user.get_rating_range %}
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+          {% endfor %}
+          {% for i in listing.user.get_antirating_range %}
+            <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+    {% else %}
+    <div style="padding-left:2em">No recent listings.</div>
+    {% endif %}
+  </div>
+
+
+
 {% endblock %}
 
 {% block tail %}
