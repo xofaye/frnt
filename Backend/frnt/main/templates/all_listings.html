@@ -36,26 +36,11 @@
 </style>
 {% endblock %}
 
-{% block title %}{{ profile.user.username }} | FrnT{% endblock %}
+{% block title %}All Listings | FrnT{% endblock %}
 
 {% block content %}
-<h1>{{ profile.user.username }}</h1>
-<img src="{{ profile.profile_image }}" style="width:200px; height:200px;">
-<br>
-<br>
-<label> First name:</label> {{ profile.user.first_name }} <br>
-<label>Last name:</label> {{ profile.user.last_name }} <br>
-<label>Location:</label> {{profile.location }} <br>
-<label>Biography:</label> {{ profile.biography }} <br>
-<label>Rating:</label> {{ profile.rating }} from {{ profile.rating_count }} reviews<br>
-{% for i in profile.get_rating_range %}
-<span class="glyphicon glyphicon-star" aria-hidden="true"></span>
-{% endfor %}
-{% for i in profile.get_antirating_range %}
-<span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
-{% endfor %}
 <div class="row">
-    <h2 class="col-md-12">{{ profile.user.first_name }}'s Listings</h2>
+    <h2 class="col-md-12">Recent Listings</h2>
  </div>
 
   <div class="grid row">
@@ -78,14 +63,23 @@
           <span style="font-size: 2.5rem;">${{ listing.price }}<sub>/wk</sub></span>
         </div>
       </div>
-      
+      <div class="row">
+        <div class="col-md-12">
+          Posted by <a href="/{{listing.user.user.username}}">{{ listing.user.user.first_name }} {{listing.user.user.last_name}}</a>
+          {% for i in listing.user.get_rating_range %}
+            <span class="glyphicon glyphicon-star" aria-hidden="true"></span>
+          {% endfor %}
+          {% for i in listing.user.get_antirating_range %}
+            <span class="glyphicon glyphicon-star-empty" aria-hidden="true"></span>
+          {% endfor %}
+        </div>
+      </div>
     </div>
     {% endfor %}
     {% else %}
     <div style="padding-left:2em">No recent listings.</div>
     {% endif %}
   </div>
-
 
 
 {% endblock %}
