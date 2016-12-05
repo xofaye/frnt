@@ -115,7 +115,19 @@ def view_profile(request, username):
 def view_listing(request, id):
     listing = get_object_or_404(Listing, id__iexact=id)
 
-    context = {'user': request.user, 'listing': listing}
+    approve_alert = int(request.GET.get('accept', 0)) == 1
+    if approve_alert:
+        title = listing.title
+        subject = 'Booking Request Approved!'
+        project_email = 'csc301project@freeatnet.com'
+        to_email = request.GET.get('requester_email', '')
+        email_text = "Hi there! <br><br>" + "Your request for " + title + " has been approved!" + "We hope you enjoy it!"
+        msg = EmailMessage(subject, email_text, project_email, [to_email])
+        msg.content_subtype = "html"
+        msg.send()
+
+
+    context = {'user': request.user, 'listing': listing, 'approve_alert': approve_alert}
     return render(request, 'view_listing.html', context)
 
 
@@ -172,14 +184,19 @@ def edit_listing(request):
 
 def book(request):
     subject = 'New Furniture Booking'
+    listing_id = request.POST.get('id', 0)
     title = request.POST.get('title', '')
     name = request.POST.get('first_name', '')
+    username = request.POST.get('username', '')
+
     message = request.POST.get('booking_message', '')
     project_email = 'csc301project@freeatnet.com'
     from_email = request.POST.get('from_email', '')
     to_email = request.POST.get('to_email', '')
     email_text = "Hi " + name + "! <br><br>" + "You got a booking request from: " + \
-                 from_email + " for your listing: '" + title + "'<br><br> Message: <br>" + message
+                 from_email + " <a href = \"http://localhost:8000/" + username + "\"> (Profile) </a>" + " for your listing: '" + title + "'<br><br> Message: <br>" + message
+    email_text += "<br /><a href=\"http://localhost:8000/listing/" + listing_id + "/?accept=1&requester_email=" + from_email + "\">Approve request</a> <br />"
+    email_text += "<a href=\"http://localhost:8000/listing/" + listing_id + "/?ignore\">Decline request</a> <br />"
     if subject and message and from_email:
         try:
             msg = EmailMessage(subject, email_text, project_email, [to_email])

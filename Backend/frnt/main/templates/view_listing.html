@@ -45,12 +45,17 @@
 {% block title %}{{ listing.title }} | FrnT{% endblock %}
 
 {% block content %}
+{% if approve_alert %}
+<div class="alert alert-success" role="alert">
+  <b>Request approved!</b> You have approved a booking request for this listing.
+</div>
+{% endif %}
 <div class="row">
   <div class="col-md-12 listing-image" style="background-image: url({{ listing.pictures.all.0.url }})"></div>
 
   <div class="col-md-8">
     <h1 clss="col-md-12">{{ listing.title }}</h1>
-    <p class="lead text-muted">Price: ${{listing.price}} per week &bull; Location: {{listing.location.city}}</p>
+    <p class="lead text-muted">Price: ${{listing.price}} per month &bull; Location: {{listing.location.city}}</p>
     <h4>About this listing</h4>
     <p>
       {{ listing.description }}
@@ -131,12 +136,14 @@
             <small style="font-size:1rem;">You will not be charged until your booking is approved.</small>
           </div>
          <form method="POST" action="/book/" role ="book">
-
+          <input type="hidden" name="id" value="{{ listing.id }}" />
           <div class="col-md-6">
             <input name="first_name" type="hidden" value="{{ listing.user.user.first_name }}">
             <input name="title" type="hidden" value="{{ listing.title }}">
             <input name="to_email" type="hidden" value="{{ listing.user.user.email }}">
             <input name="from_email" type="hidden" value="{{ request.user.email }}">
+                         <input name="username" type="hidden" value="{{ request.user.username }}">
+
             <label for="booking_message">Message for the lister</label>
               {% csrf_token %}
             <textarea name="booking_message" class="form-control" style="height: 200px; width: 100%;" rows="3"></textarea>
