@@ -7,12 +7,11 @@ Built with [Python 3.X][0] using the [Django Web Framework][1].
 ### Requirements
 
 * Python 3
-* Node.js
 
 ### Quick start
 
 To set up a development environment quickly, first install Python 3.4. It
-comes with virtualenv built-in. So create a virtual env by:
+comes with virtualenv built-in. Create a virtual env by:
 
     $ virtualenv --prompt="(frnt)" -p python3.X .virtualenv
     $ source .virtualenv/bin/activate
@@ -34,13 +33,8 @@ Start up the dev server:
 
     python3 manage.py runserver
 
-### Development
-
-Make sure node.js is installed (you have the `npm` command available).
-
-Install all npm dependencies:
-
-    npm install
+The application can be found at http://localhost:8000
+Admin panel is at http://localhost:8000/admin
 
 ### Detailed instructions
 
