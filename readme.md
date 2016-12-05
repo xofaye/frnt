@@ -7,8 +7,11 @@ FrnT is a community based, crowd-sourced furniture-sharing rental website that a
 ### Repo structure
 - [Iteration documents](Iterations/) -- course-required iteration planning and review documents.
 - [Product Documents](Product Documents/) -- all things related to product definition: workflow descriptions, wireframes, mockups, interview notes.
-- [Frontend](Frontend/)
 - [Backend](Backend/)
+
+### Running the application locally 
+
+- Instructions can be found on the [application README.md](Backend/frnt/)
 
 ### Dev Process
 
