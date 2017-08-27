@@ -19,9 +19,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.8/howto/deployment/checklist/
 
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '@zu6#7^$zcuvn(7kjr_^a^ps@k(4^mfkisiibe3*f48r5=7er*'
-
+# SECURITY WARNING: keep the secret key used in production secret
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
@@ -116,11 +114,3 @@ LOGOUT_REDIRECT_URL = '/logout_success'
 
 SITE_ID = 1
 
-# EMAIL_HOST = 'smtp.sendgrid.net'
-# EMAIL_HOST_USER = 'xofaye'
-# EMAIL_HOST_PASSWORD = 'FrnT3012016'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-
-EMAIL_BACKEND = "sgbackend.SendGridBackend"
-SENDGRID_API_KEY = "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"
